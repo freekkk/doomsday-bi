@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.pointlog.BaseEventLogDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog">
+        <result column="id" property="id"/>
+        <result column="player_id" property="playerId"/>
+        <result column="player_name" property="playerName"/>
+        <result column="level" property="level"/>
+        <result column="vip_level" property="vipLevel"/>
+        <result column="vip_exp" property="vipExp"/>
+        <result column="country" property="country"/>
+        <result column="language" property="language"/>
+        <result column="device_type" property="deviceType"/>
+        <result column="device_id" property="deviceId"/>
+        <result column="alliance_id" property="allianceId"/>
+        <result column="platform_id" property="platformId"/>
+        <result column="fvalue" property="Fvalue"/>
+        <result column="rollback" property="rollback"/>
+        <result column="event_id" property="eventId"/>
+        <result column="log_time" property="logTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `player_id`,
+        `player_name`,
+        `level`,
+        `vip_level`,
+        `vip_exp`,
+        `country`,
+        `language`,
+        `device_type`,
+        `device_id`,
+        `alliance_id`,
+        `platform_id`,
+        `fvalue`,
+        `rollback`,
+        `event_id`,
+        `log_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO base_event_log (
+            `id`,
+            `player_id`,
+            `player_name`,
+            `level`,
+            `vip_level`,
+            `vip_exp`,
+            `country`,
+            `language`,
+            `device_type`,
+            `device_id`,
+            `alliance_id`,
+            `platform_id`,
+            `fvalue`,
+            `rollback`,
+            `event_id`,
+            `log_time`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.playerId},
+            #{pojo.playerName},
+            #{pojo.level},
+            #{pojo.vipLevel},
+            #{pojo.vipExp},
+            #{pojo.country},
+            #{pojo.language},
+            #{pojo.deviceType},
+            #{pojo.deviceId},
+            #{pojo.allianceId},
+            #{pojo.platformId},
+            #{pojo.Fvalue},
+            #{pojo.rollback},
+            #{pojo.eventId},
+            #{pojo.logTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO base_event_log (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.playerId},
+            #{pojo.playerName},
+            #{pojo.level},
+            #{pojo.vipLevel},
+            #{pojo.vipExp},
+            #{pojo.country},
+            #{pojo.language},
+            #{pojo.deviceType},
+            #{pojo.deviceId},
+            #{pojo.allianceId},
+            #{pojo.platformId},
+            #{pojo.Fvalue},
+            #{pojo.rollback},
+            #{pojo.eventId},
+            #{pojo.logTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE base_event_log
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.playerId != null"> `player_id` = #{pojo.playerId}, </if>
+            <if test="pojo.playerName != null"> `player_name` = #{pojo.playerName}, </if>
+            <if test="pojo.level != null"> `level` = #{pojo.level}, </if>
+            <if test="pojo.vipLevel != null"> `vip_level` = #{pojo.vipLevel}, </if>
+            <if test="pojo.vipExp != null"> `vip_exp` = #{pojo.vipExp}, </if>
+            <if test="pojo.country != null"> `country` = #{pojo.country}, </if>
+            <if test="pojo.language != null"> `language` = #{pojo.language}, </if>
+            <if test="pojo.deviceType != null"> `device_type` = #{pojo.deviceType}, </if>
+            <if test="pojo.deviceId != null"> `device_id` = #{pojo.deviceId}, </if>
+            <if test="pojo.allianceId != null"> `alliance_id` = #{pojo.allianceId}, </if>
+            <if test="pojo.platformId != null"> `platform_id` = #{pojo.platformId}, </if>
+            <if test="pojo.Fvalue != null"> `fvalue` = #{pojo.Fvalue}, </if>
+            <if test="pojo.rollback != null"> `rollback` = #{pojo.rollback}, </if>
+            <if test="pojo.eventId != null"> `event_id` = #{pojo.eventId}, </if>
+            <if test="pojo.logTime != null"> `log_time` = #{pojo.logTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

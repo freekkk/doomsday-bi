@@ -1,5 +1,7 @@
 package cn.relaxtech.doomsday.bi.boot.service.pointlog;
 
+import cn.relaxtech.doomsday.bi.boot.utils.DateUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -9,10 +11,11 @@ import cn.relaxtech.doomsday.bi.boot.dao.pointlog.BaseEventLogDao;
 @Service
 public class BaseEventLogService{
 
-    @Resource
+    @Autowired
     private BaseEventLogDao baseEventLogDao;
 
     public int insert(BaseEventLog pojo){
+        pojo.setLogDate(DateUtil.getNowTimeDateFormat("yyyy_MM_dd"));
         return baseEventLogDao.insert(pojo);
     }
 

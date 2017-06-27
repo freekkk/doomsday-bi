@@ -54,7 +54,7 @@ public class EventHandlerManage {
 
         subEventList =Splitter.on(',').trimResults().omitEmptyStrings().splitToList(subEventIds);
 
-        //TODO:这里先手动的注册事件管理器。本来想直接反射扫描packageName下面的所有handler的，但是会和spring的Autowired不兼容。有空重构一下
+        //TODO:这里先手动的注册事件管理器。有空重构一下。也不用重构了。客户端数据全部打到了base里面的剩余10扩展字段吧
         map.put(AppConstant.HANDLER_BASE,baseEventHandler);
         map.put(AppConstant.HANDLER_STORYMISSION,storyMissionHandler);
         map.put(AppConstant.HANDLER_ALLIANCECREATE,allianceCreateHandler);

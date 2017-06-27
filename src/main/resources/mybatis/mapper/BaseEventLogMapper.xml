@@ -18,6 +18,17 @@
         <result column="fvalue" property="Fvalue"/>
         <result column="rollback" property="rollback"/>
         <result column="event_id" property="eventId"/>
+        <result column="extend_str1" property="extendStr1"/>
+        <result column="extend_str2" property="extendStr2"/>
+        <result column="extend_str3" property="extendStr3"/>
+        <result column="extend_str4" property="extendStr4"/>
+        <result column="extend_str5" property="extendStr5"/>
+        <result column="extend_str6" property="extendStr6"/>
+        <result column="extend_str7" property="extendStr7"/>
+        <result column="extend_str8" property="extendStr8"/>
+        <result column="extend_str9" property="extendStr9"/>
+        <result column="extend_str10" property="extendStr10"/>
+        <result column="log_date" property="logDate"/>
         <result column="log_time" property="logTime"/>
     </resultMap>
 
@@ -38,6 +49,17 @@
         `fvalue`,
         `rollback`,
         `event_id`,
+        `extend_str1`,
+        `extend_str2`,
+        `extend_str3`,
+        `extend_str4`,
+        `extend_str5`,
+        `extend_str6`,
+        `extend_str7`,
+        `extend_str8`,
+        `extend_str9`,
+        `extend_str10`,
+        `log_date`,
         `log_time`
     </sql>
 
@@ -59,6 +81,17 @@
             `fvalue`,
             `rollback`,
             `event_id`,
+            `extend_str1`,
+            `extend_str2`,
+            `extend_str3`,
+            `extend_str4`,
+            `extend_str5`,
+            `extend_str6`,
+            `extend_str7`,
+            `extend_str8`,
+            `extend_str9`,
+            `extend_str10`,
+            `log_date`,
             `log_time`
         ) VALUES (
             #{pojo.id},
@@ -76,6 +109,17 @@
             #{pojo.Fvalue},
             #{pojo.rollback},
             #{pojo.eventId},
+            #{pojo.extendStr1},
+            #{pojo.extendStr2},
+            #{pojo.extendStr3},
+            #{pojo.extendStr4},
+            #{pojo.extendStr5},
+            #{pojo.extendStr6},
+            #{pojo.extendStr7},
+            #{pojo.extendStr8},
+            #{pojo.extendStr9},
+            #{pojo.extendStr10},
+            #{pojo.logDate},
             #{pojo.logTime}
         )
     </insert>
@@ -102,6 +146,17 @@
             #{pojo.Fvalue},
             #{pojo.rollback},
             #{pojo.eventId},
+            #{pojo.extendStr1},
+            #{pojo.extendStr2},
+            #{pojo.extendStr3},
+            #{pojo.extendStr4},
+            #{pojo.extendStr5},
+            #{pojo.extendStr6},
+            #{pojo.extendStr7},
+            #{pojo.extendStr8},
+            #{pojo.extendStr9},
+            #{pojo.extendStr10},
+            #{pojo.logDate},
             #{pojo.logTime}
             )
         </foreach>
@@ -126,6 +181,17 @@
             <if test="pojo.Fvalue != null"> `fvalue` = #{pojo.Fvalue}, </if>
             <if test="pojo.rollback != null"> `rollback` = #{pojo.rollback}, </if>
             <if test="pojo.eventId != null"> `event_id` = #{pojo.eventId}, </if>
+            <if test="pojo.extendStr1 != null"> `extend_str1` = #{pojo.extendStr1}, </if>
+            <if test="pojo.extendStr2 != null"> `extend_str2` = #{pojo.extendStr2}, </if>
+            <if test="pojo.extendStr3 != null"> `extend_str3` = #{pojo.extendStr3}, </if>
+            <if test="pojo.extendStr4 != null"> `extend_str4` = #{pojo.extendStr4}, </if>
+            <if test="pojo.extendStr5 != null"> `extend_str5` = #{pojo.extendStr5}, </if>
+            <if test="pojo.extendStr6 != null"> `extend_str6` = #{pojo.extendStr6}, </if>
+            <if test="pojo.extendStr7 != null"> `extend_str7` = #{pojo.extendStr7}, </if>
+            <if test="pojo.extendStr8 != null"> `extend_str8` = #{pojo.extendStr8}, </if>
+            <if test="pojo.extendStr9 != null"> `extend_str9` = #{pojo.extendStr9}, </if>
+            <if test="pojo.extendStr10 != null"> `extend_str10` = #{pojo.extendStr10}, </if>
+            <if test="pojo.logDate != null"> `log_time` = #{pojo.logDate} </if>
             <if test="pojo.logTime != null"> `log_time` = #{pojo.logTime} </if>
         </set>
         WHERE id = #{pojo.id}

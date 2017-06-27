@@ -2,10 +2,7 @@ package cn.relaxtech.doomsday.bi.boot.entity.pointLog;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -52,5 +49,28 @@ public class BaseEventLog {
 
     private String eventId; //log事件ID。和客户端一致，和业务handler一致
 
-    private Timestamp logTime; //打点log时间
+    private String extendStr1; //扩展字段1
+
+    private String extendStr2;//扩展字段2
+
+    private String extendStr3;//扩展字段3
+
+    private String extendStr4;//扩展字段4
+
+    private String extendStr5;//扩展字段5
+
+    private String extendStr6;//扩展字段6
+
+    private String extendStr7;//扩展字段7
+
+    private String extendStr8;//扩展字段8
+
+    private String extendStr9;//扩展字段9
+
+    private String extendStr10;//扩展字段10
+
+    @Transient
+    private String logDate;
+
+    private Long logTime; //打点log时间
 }

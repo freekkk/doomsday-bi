@@ -15,7 +15,6 @@ public class DruidProperties {
     private String username;
     private String password;
     private String driverClass;
-
     private int     maxActive;
     private int     minIdle;
     private int     initialSize;

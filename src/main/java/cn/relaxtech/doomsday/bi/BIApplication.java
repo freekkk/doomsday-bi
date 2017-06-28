@@ -14,10 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class BIApplication {
 
 	public static void main(String[] args) {
-		log.info("start");
+		log.info("doomsday-bi starting...");
 	
 		SpringApplication.run(BIApplication.class, args);
 
-
+		log.info("doomsday-bi start success");
 	}
 }

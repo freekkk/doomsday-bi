@@ -1,5 +1,6 @@
 package cn.relaxtech.doomsday.bi.boot.conf;
 
+import cn.relaxtech.doomsday.bi.boot.druid.DruidProperties;
 import lombok.Data;
 import org.apache.commons.collections4.map.HashedMap;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,8 +8,11 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -27,6 +31,7 @@ import com.dangdang.ddframe.rdb.sharding.api.strategy.table.TableShardingStrateg
 import com.dangdang.ddframe.rdb.sharding.id.generator.self.CommonSelfIdGenerator;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;
@@ -36,29 +41,39 @@ import java.util.Properties;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "spring.datasource")
+@EnableConfigurationProperties(DruidProperties.class)
+@ConditionalOnClass(DruidDataSource.class)
+@ConditionalOnProperty(prefix = "druid",name = "url")
 @AutoConfigureBefore(DataSourceAutoConfiguration.class)
 public class ShardingConfig {
 
-    private String driverClassName;
-    private String url;
-    private String username;
-    private String password;
+    @Autowired
+    private DruidProperties properties;
+
    
     @Bean
     @Primary
     public DataSource shardingDataSource() throws Exception {
-        //dataSource
-        Properties properties = new Properties();
-//        properties.put("driverClassName","com.mysql.jdbc.Driver");
-//        properties.put("url", "jdbc:mysql://localhost:3306/doomsday_bi");
-//        properties.put("username", "doomsday");
-//        properties.put("password", "doomsday123");
-        properties.put("driverClassName",driverClassName);
-        properties.put("url", url);
-        properties.put("username", username);
-        properties.put("password", password);
-        DataSource dataSource = DruidDataSourceFactory.createDataSource(properties);
+
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUrl(properties.getUrl());
+        dataSource.setUsername(properties.getUsername());
+        dataSource.setPassword(properties.getPassword());
+        if (properties.getInitialSize() > 0) {
+            dataSource.setInitialSize(properties.getInitialSize());
+        }
+        if (properties.getMinIdle() > 0) {
+            dataSource.setMinIdle(properties.getMinIdle());
+        }
+        if (properties.getMaxActive() > 0) {
+            dataSource.setMaxActive(properties.getMaxActive());
+        }
+        dataSource.setTestOnBorrow(properties.isTestOnBorrow());
+        try {
+            dataSource.init();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         //dataSourceRule
         Map<String,DataSource> dataSourceMap = new HashedMap();

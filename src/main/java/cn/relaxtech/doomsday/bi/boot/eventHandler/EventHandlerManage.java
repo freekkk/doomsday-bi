@@ -52,7 +52,7 @@ public class EventHandlerManage {
 
         //TODO:这里先手动的注册事件管理器。有空重构一下。也不用重构了。客户端数据全部打到了base里面的剩余10扩展字段吧
         map.put(AppConstant.HANDLER_BASE,baseEventHandler);
-        map.put(AppConstant.HANDLER_ALLIANCECREATE,allianceCreateHandler);
+        //map.put(AppConstant.HANDLER_ALLIANCECREATE,allianceCreateHandler);
 
     }
 

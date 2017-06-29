@@ -32,13 +32,21 @@ public class PointLogController {
     {
         if(form == null)
             return AppConstant.MODEL_FORM_NOT_FOUND;
-        if(form.getEventId() ==null || form.getEventData() ==null )
+        if(form.getEventId() ==null)
         {
-            log.error(String.format(AppConstant.MODEL_FORM_EVENT_NULL));
-            return  AppConstant.MODEL_FORM_EVENT_NULL;
+            log.error(String.format(AppConstant.MODEL_FORM_EVENT_ID_NULL));
+            return  AppConstant.MODEL_FORM_EVENT_ID_NULL;
+        }
+
+        if(form.getEventData() ==null)
+        {
+            log.error(String.format(AppConstant.MODEL_FORM_EVENT_DATA_NULL));
+            return  AppConstant.MODEL_FORM_EVENT_DATA_NULL;
         }
         String eventId =form.getEventId();
         String eventData=form.getEventData();
+
+        log.debug(String.format("Get Client eventId:%s eventData:%s",eventId,eventData));
         String handlerName=eventHandlerManage.useSubEventHandler(eventId)?eventId:AppConstant.HANDLER_BASE;
 
         //通过eventId 来区分打点操作

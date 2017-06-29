@@ -1,13 +1,14 @@
 package cn.relaxtech.doomsday.bi.boot.service.pointlog;
 
 import cn.relaxtech.doomsday.bi.boot.utils.DateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog;
 import cn.relaxtech.doomsday.bi.boot.dao.pointlog.BaseEventLogDao;
-
+@Slf4j
 @Service
 public class BaseEventLogService{
 

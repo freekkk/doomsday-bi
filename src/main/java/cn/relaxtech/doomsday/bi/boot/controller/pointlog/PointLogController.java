@@ -32,7 +32,11 @@ public class PointLogController {
     {
         if(form == null)
             return AppConstant.MODEL_FORM_NOT_FOUND;
-
+        if(form.getEventId() ==null || form.getEventData() ==null )
+        {
+            log.error(String.format(AppConstant.MODEL_FORM_EVENT_NULL));
+            return  AppConstant.MODEL_FORM_EVENT_NULL;
+        }
         String eventId =form.getEventId();
         String eventData=form.getEventData();
         String handlerName=eventHandlerManage.useSubEventHandler(eventId)?eventId:AppConstant.HANDLER_BASE;

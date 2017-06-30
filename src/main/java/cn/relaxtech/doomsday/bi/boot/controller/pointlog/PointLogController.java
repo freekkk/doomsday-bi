@@ -38,13 +38,13 @@ public class PointLogController {
 
         if(StringUtils.isEmpty(form.getEventId()))
         {
-            log.error(String.format(AppConstant.MODEL_FORM_EVENT_ID_NULL));
+            log.debug(String.format(AppConstant.MODEL_FORM_EVENT_ID_NULL));
             return  AppConstant.MODEL_FORM_EVENT_ID_NULL;
         }
 
         if(StringUtils.isEmpty(form.getEventData()) || form.getEventData().length()<3) //这里判断字符串长度是因为客户端有个bug会发送{}这样的字符串上来
         {
-            log.error(String.format(AppConstant.MODEL_FORM_EVENT_DATA_NULL));
+            log.debug(String.format(AppConstant.MODEL_FORM_EVENT_DATA_NULL));
             return  AppConstant.MODEL_FORM_EVENT_DATA_NULL;
         }
         String eventId =form.getEventId();

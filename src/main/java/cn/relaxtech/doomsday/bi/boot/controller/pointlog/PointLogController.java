@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -32,13 +33,16 @@ public class PointLogController {
     {
         if(form == null)
             return AppConstant.MODEL_FORM_NOT_FOUND;
-        if(form.getEventId() ==null)
+
+        log.debug(String.format("Get Client eventId:%s eventData:%s",form.getEventId(),form.getEventData()));
+
+        if(StringUtils.isEmpty(form.getEventId()))
         {
             log.error(String.format(AppConstant.MODEL_FORM_EVENT_ID_NULL));
             return  AppConstant.MODEL_FORM_EVENT_ID_NULL;
         }
 
-        if(form.getEventData() ==null)
+        if(StringUtils.isEmpty(form.getEventData()) || form.getEventData().length()<3) //这里判断字符串长度是因为客户端有个bug会发送{}这样的字符串上来
         {
             log.error(String.format(AppConstant.MODEL_FORM_EVENT_DATA_NULL));
             return  AppConstant.MODEL_FORM_EVENT_DATA_NULL;
@@ -46,7 +50,7 @@ public class PointLogController {
         String eventId =form.getEventId();
         String eventData=form.getEventData();
 
-        log.debug(String.format("Get Client eventId:%s eventData:%s",eventId,eventData));
+
         String handlerName=eventHandlerManage.useSubEventHandler(eventId)?eventId:AppConstant.HANDLER_BASE;
 
         //通过eventId 来区分打点操作

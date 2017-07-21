@@ -1,5 +1,6 @@
 package cn.relaxtech.doomsday.bi.boot.service.bi;
 
+import cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,8 +29,8 @@ public class BiGeneralDataService{
         return biGeneralDataDao.update(pojo);
     }
 
-    public List<BiGeneralData> getList()
+    public List<BiGeneralData> getList(SearchParams params)
     {
-        return biGeneralDataDao.getList();
+        return biGeneralDataDao.getList(params);
     }
 }

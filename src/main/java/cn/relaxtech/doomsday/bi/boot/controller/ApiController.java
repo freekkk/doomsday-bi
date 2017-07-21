@@ -1,16 +1,17 @@
 package cn.relaxtech.doomsday.bi.boot.controller;
 
 import cn.relaxtech.doomsday.bi.boot.entity.bi.BiGeneralData;
+import cn.relaxtech.doomsday.bi.boot.entity.bi.BiGeneralDataDetail;
+import cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams;
+import cn.relaxtech.doomsday.bi.boot.service.bi.BiGeneralDataDetailService;
 import cn.relaxtech.doomsday.bi.boot.service.bi.BiGeneralDataService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @Slf4j
@@ -22,20 +23,23 @@ public class ApiController {
     @Autowired
     private BiGeneralDataService biGeneralDataService;
 
-	@ApiOperation(value="index", notes="Api门户首页")
-	@ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "String")
-	@RequestMapping(value="index")
-	public String index(@RequestParam String name)
-	{
+    @Autowired
+    private BiGeneralDataDetailService biGeneralDataDetailService;
 
-		return "Hello world!"+name;
+
+	@ApiOperation(value="bi总体数据接口", notes="bi总体数据接口")
+	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
+	public List<BiGeneralData> bigeneraldata(@RequestBody SearchParams params)
+	{
+		return biGeneralDataService.getList(params);
 	}
 
-	@ApiOperation(value="index", notes="Api门户首页")
-	//@ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "String")
-	@RequestMapping(value="bigeneraldata")
-	public List<BiGeneralData> index()
+	@ApiOperation(value="bi总体数据明细接口", notes="bi总体数据明细接口")
+	//@ApiImplicitParam(name = "params", value = "查询参数", required = true,dataType = "SearchParams")
+	@RequestMapping(value="bigeneraldatadetail",method = RequestMethod.POST)
+	public List<BiGeneralDataDetail> bigeneraldatadetail(@RequestBody SearchParams params)
 	{
-        return biGeneralDataService.getList();
+		List<String> c=params.getCountry();
+		return biGeneralDataDetailService.getList(params);
 	}
 }

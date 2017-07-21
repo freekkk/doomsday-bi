@@ -1,5 +1,6 @@
 package cn.relaxtech.doomsday.bi.boot.dao.bi;
 
+import cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,6 +17,6 @@ public interface BiGeneralDataDao {
 
     int update(@Param("pojo") BiGeneralData pojo);
 
-    List<BiGeneralData> getList();
+    List<BiGeneralData> getList(SearchParams params);
 
 }

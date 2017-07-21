@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiGeneralDataDao">
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiGeneralDataDetailDao">
     <!--auto generated Code-->
-    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiGeneralData">
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiGeneralDataDetail">
         <result column="id" property="id"/>
         <result column="server_id" property="serverId"/>
         <result column="job_date" property="jobDate"/>
+        <result column="country" property="country"/>
+        <result column="cname" property="cname"/>
+        <result column="T" property="T"/>
+        <result column="channel" property="channel"/>
+        <result column="device_type" property="deviceType"/>
         <result column="DAU" property="DAU"/>
         <result column="NUC" property="NUC"/>
         <result column="NDC" property="NDC"/>
@@ -25,10 +30,16 @@
     <sql id="all_column">
         `id`,
         `server_id`,
+        `job_date`,
+        `country`,
+        `cname`,
+        `T`,
+        `device_type`,
         `DAU`,
         `NUC`,
         `NDC`,
         `DRR`,
+        `D3RR`,
         `WRR`,
         `HMRR`,
         `MRR`,
@@ -36,19 +47,24 @@
         `PUC`,
         `ARPPU`,
         `ARPU`,
-        `PUR`,
-        `create_time`
+        `PUR`
     </sql>
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO bi_general_data (
+        INSERT INTO bi_general_data_detail (
             `id`,
             `server_id`,
+            `job_date`,
+            `country`,
+            `cname`,
+            `T`,
+            `device_type`,
             `DAU`,
             `NUC`,
             `NDC`,
             `DRR`,
+            `D3RR`,
             `WRR`,
             `HMRR`,
             `MRR`,
@@ -56,15 +72,20 @@
             `PUC`,
             `ARPPU`,
             `ARPU`,
-            `PUR`,
-            `create_time`
+            `PUR`
         ) VALUES (
             #{pojo.id},
             #{pojo.serverId},
+            #{pojo.jobDate},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.deviceType},
             #{pojo.DAU},
             #{pojo.NUC},
             #{pojo.NDC},
             #{pojo.DRR},
+            #{pojo.D3RR},
             #{pojo.WRR},
             #{pojo.HMRR},
             #{pojo.MRR},
@@ -72,21 +93,26 @@
             #{pojo.PUC},
             #{pojo.ARPPU},
             #{pojo.ARPU},
-            #{pojo.PUR},
-            #{pojo.createTime}
+            #{pojo.PUR}
         )
     </insert>
 
     <!--auto generated Code-->
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO bi_general_data
+        INSERT INTO bi_general_data_detail
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id!=null"> `id`,</if>
             <if test="pojo.serverId!=null"> `server_id`,</if>
+            <if test="pojo.jobDate!=null"> `job_date`,</if>
+            <if test="pojo.country!=null"> `country`,</if>
+            <if test="pojo.cname!=null"> `cname`,</if>
+            <if test="pojo.T!=null"> `T`,</if>
+            <if test="pojo.deviceType!=null"> `device_type`,</if>
             <if test="pojo.DAU!=null"> `DAU`,</if>
             <if test="pojo.NUC!=null"> `NUC`,</if>
             <if test="pojo.NDC!=null"> `NDC`,</if>
             <if test="pojo.DRR!=null"> `DRR`,</if>
+            <if test="pojo.D3RR!=null"> `D3RR`,</if>
             <if test="pojo.WRR!=null"> `WRR`,</if>
             <if test="pojo.HMRR!=null"> `HMRR`,</if>
             <if test="pojo.MRR!=null"> `MRR`,</if>
@@ -95,16 +121,21 @@
             <if test="pojo.ARPPU!=null"> `ARPPU`,</if>
             <if test="pojo.ARPU!=null"> `ARPU`,</if>
             <if test="pojo.PUR!=null"> `PUR`,</if>
-            <if test="pojo.createTime!=null"> `create_time`,</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pojo.id!=null">#{pojo.id},</if>
             <if test="pojo.serverId!=null">#{pojo.serverId},</if>
+            <if test="pojo.jobDate!=null">#{pojo.jobDate},</if>
+            <if test="pojo.country!=null">#{pojo.country},</if>
+            <if test="pojo.cname!=null">#{pojo.cname},</if>
+            <if test="pojo.T!=null">#{pojo.T},</if>
+            <if test="pojo.deviceType!=null">#{pojo.deviceType},</if>
             <if test="pojo.DAU!=null">#{pojo.DAU},</if>
             <if test="pojo.NUC!=null">#{pojo.NUC},</if>
             <if test="pojo.NDC!=null">#{pojo.NDC},</if>
             <if test="pojo.DRR!=null">#{pojo.DRR},</if>
+            <if test="pojo.D3RR!=null">#{pojo.D3RR},</if>
             <if test="pojo.WRR!=null">#{pojo.WRR},</if>
             <if test="pojo.HMRR!=null">#{pojo.HMRR},</if>
             <if test="pojo.MRR!=null">#{pojo.MRR},</if>
@@ -113,23 +144,28 @@
             <if test="pojo.ARPPU!=null">#{pojo.ARPPU},</if>
             <if test="pojo.ARPU!=null">#{pojo.ARPU},</if>
             <if test="pojo.PUR!=null">#{pojo.PUR},</if>
-            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
         </trim>
     </insert>
 
     <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO bi_general_data (
+        INSERT INTO bi_general_data_detail (
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
             (
             #{pojo.id},
             #{pojo.serverId},
+            #{pojo.jobDate},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.deviceType},
             #{pojo.DAU},
             #{pojo.NUC},
             #{pojo.NDC},
             #{pojo.DRR},
+            #{pojo.D3RR},
             #{pojo.WRR},
             #{pojo.HMRR},
             #{pojo.MRR},
@@ -137,22 +173,27 @@
             #{pojo.PUC},
             #{pojo.ARPPU},
             #{pojo.ARPU},
-            #{pojo.PUR},
-            #{pojo.createTime}
+            #{pojo.PUR}
             )
         </foreach>
     </insert>
 
     <!--auto generated Code-->
     <update id="update">
-        UPDATE bi_general_data
+        UPDATE bi_general_data_detail
         <set>
             <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
             <if test="pojo.serverId != null"> `server_id` = #{pojo.serverId}, </if>
+            <if test="pojo.jobDate != null"> `job_date` = #{pojo.jobDate}, </if>
+            <if test="pojo.country != null"> `country` = #{pojo.country}, </if>
+            <if test="pojo.cname != null"> `cname` = #{pojo.cname}, </if>
+            <if test="pojo.T != null"> `T` = #{pojo.T}, </if>
+            <if test="pojo.deviceType != null"> `device_type` = #{pojo.deviceType}, </if>
             <if test="pojo.DAU != null"> `DAU` = #{pojo.DAU}, </if>
             <if test="pojo.NUC != null"> `NUC` = #{pojo.NUC}, </if>
             <if test="pojo.NDC != null"> `NDC` = #{pojo.NDC}, </if>
             <if test="pojo.DRR != null"> `DRR` = #{pojo.DRR}, </if>
+            <if test="pojo.D3RR != null"> `D3RR` = #{pojo.D3RR}, </if>
             <if test="pojo.WRR != null"> `WRR` = #{pojo.WRR}, </if>
             <if test="pojo.HMRR != null"> `HMRR` = #{pojo.HMRR}, </if>
             <if test="pojo.MRR != null"> `MRR` = #{pojo.MRR}, </if>
@@ -160,19 +201,37 @@
             <if test="pojo.PUC != null"> `PUC` = #{pojo.PUC}, </if>
             <if test="pojo.ARPPU != null"> `ARPPU` = #{pojo.ARPPU}, </if>
             <if test="pojo.ARPU != null"> `ARPU` = #{pojo.ARPU}, </if>
-            <if test="pojo.PUR != null"> `PUR` = #{pojo.PUR}, </if>
-            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+            <if test="pojo.PUR != null"> `PUR` = #{pojo.PUR} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>
-
+    
     <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
-        SELECT * FROM bi_general_data
+        SELECT * FROM view_bi_general_data_detail
         <where>
             <if test="startDate != null and endDate !=null" >
                 job_date BETWEEN #{startDate}  AND #{endDate}
             </if>
+
+            <if test="country != null and country.size()>0" >
+                AND country in
+                <foreach collection="country" item="item" open="(" close=")" separator="," index="index">
+                  #{item}
+                </foreach>
+            </if>
+
+            <if test="channel != null and channel.size()>0" >
+                AND channel in
+                <foreach collection="channel" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="deviceType != null" >
+                AND device_Type=#{deviceType}
+            </if>
         </where>
+
     </select>
 </mapper>
 

@@ -7,10 +7,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -43,7 +45,7 @@ import java.util.Properties;
 @Configuration
 @EnableConfigurationProperties(DruidProperties.class)
 @ConditionalOnClass(DruidDataSource.class)
-@ConditionalOnProperty(prefix = "druid",name = "url")
+//@ConditionalOnProperty(prefix = "druid",name = "url")
 @AutoConfigureBefore(DataSourceAutoConfiguration.class)
 public class ShardingConfig {
 
@@ -51,8 +53,10 @@ public class ShardingConfig {
     private DruidProperties properties;
 
    
-    @Bean
+    @Bean(name="primaryDataSource")
+    @Qualifier("primaryDataSource")
     @Primary
+    @ConditionalOnProperty(prefix = "druid",name = "url")
     public DataSource shardingDataSource() throws Exception {
 
         DruidDataSource dataSource = new DruidDataSource();
@@ -99,6 +103,14 @@ public class ShardingConfig {
                 .build();
 
         return ShardingDataSourceFactory.createDataSource(shardingRule);
+    }
+
+    @Bean(name="secondaryDataSource")
+    @Qualifier("secondaryDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    public DataSource secondaryDataSource()
+    {
+        return DataSourceBuilder.create().build();
     }
     
     @Bean

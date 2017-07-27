@@ -27,7 +27,7 @@ public class BiGeneralDataDetail {
     private Double WRR;
     private Double HMRR;
     private Double MRR;
-    private Integer PAC;
+    private Double PAC;
     private Integer PUC;
     private Double ARPPU;
     private Double ARPU;

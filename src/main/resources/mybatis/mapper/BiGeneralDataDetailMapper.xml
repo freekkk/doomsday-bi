@@ -231,6 +231,7 @@
                 AND device_Type=#{deviceType}
             </if>
         </where>
+        order by job_date
 
     </select>
 </mapper>

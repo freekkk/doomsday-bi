@@ -33,23 +33,23 @@ public class ApiController {
 
 
 
-	@ApiOperation(value="bi总体数据接口")
+	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
 	public List<BiGeneralData> bigeneraldata(@RequestBody SearchParams params)
 	{
 		return biGeneralDataService.getList(params);
 	}
 
-	@ApiOperation(value="bi总体数据明细接口")
+	@ApiOperation(value="bi总体数据明细")
 	//@ApiImplicitParam(name = "params", value = "查询参数", required = true,dataType = "SearchParams")
 	@RequestMapping(value="bigeneraldatadetail",method = RequestMethod.POST)
 	public List<BiGeneralDataDetail> bigeneraldatadetail(@RequestBody SearchParams params)
 	{
-		List<String> c=params.getCountry();
+
 		return biGeneralDataDetailService.getList(params);
 	}
 
-	@ApiOperation(value="bi总体数据明细接口")
+	@ApiOperation(value="bi实时数据")
 	//@ApiImplicitParam(name = "params", value = "查询参数", required = true,dataType = "SearchParams")
 	@RequestMapping(value="bicurrentdata",method = RequestMethod.GET)
 	public List<BiCurrentData> bicurrentdata()

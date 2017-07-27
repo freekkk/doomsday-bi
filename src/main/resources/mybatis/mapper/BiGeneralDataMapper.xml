@@ -173,6 +173,9 @@
                 job_date BETWEEN #{startDate}  AND #{endDate}
             </if>
         </where>
+        <if test="startDate == null and endDate ==null" >
+            limit 15
+        </if>
     </select>
 </mapper>
 

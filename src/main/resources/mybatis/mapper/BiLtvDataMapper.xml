@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiLtvDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiLtvData">
+        <result column="id" property="id"/>
+        <result column="job_date" property="jobDate"/>
+        <result column="server_id" property="serverId"/>
+        <result column="country" property="country"/>
+        <result column="cname" property="cname"/>
+        <result column="T" property="T"/>
+        <result column="channel" property="channel"/>
+        <result column="device_type" property="deviceType"/>
+        <result column="PUC" property="PUC"/>
+        <result column="NUC" property="NUC"/>
+        <result column="PAC" property="PAC"/>
+        <result column="LTV1" property="LTV1"/>
+        <result column="LTV2" property="LTV2"/>
+        <result column="LTV3" property="LTV3"/>
+        <result column="LTV4" property="LTV4"/>
+        <result column="LTV5" property="LTV5"/>
+        <result column="LTV6" property="LTV6"/>
+        <result column="LTV7" property="LTV7"/>
+        <result column="LTV14" property="LTV14"/>
+        <result column="LTV21" property="LTV21"/>
+        <result column="LTV30" property="LTV30"/>
+        <result column="LTV60" property="LTV60"/>
+        <result column="LTV90" property="LTV90"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `job_date`,
+        `server_id`,
+        `country`,
+        `cname`,
+        `T`,
+        `channel`,
+        `device_type`,
+        `PUC`,
+        `NUC`,
+        `PAC`,
+        `LTV1`,
+        `LTV2`,
+        `LTV3`,
+        `LTV4`,
+        `LTV5`,
+        `LTV6`,
+        `LTV7`,
+        `LTV14`,
+        `LTV21`,
+        `LTV30`,
+        `LTV60`,
+        `LTV90`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_ltv_data (
+            `id`,
+            `job_date`,
+            `server_id`,
+            `country`,
+            `cname`,
+            `T`,
+            `channel`,
+            `device_type`,
+            `PUC`,
+            `NUC`,
+            `PAC`,
+            `LTV1`,
+            `LTV2`,
+            `LTV3`,
+            `LTV4`,
+            `LTV5`,
+            `LTV6`,
+            `LTV7`,
+            `LTV14`,
+            `LTV21`,
+            `LTV30`,
+            `LTV60`,
+            `LTV90`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.channel},
+            #{pojo.deviceType},
+            #{pojo.PUC},
+            #{pojo.NUC},
+            #{pojo.PAC},
+            #{pojo.LTV1},
+            #{pojo.LTV2},
+            #{pojo.LTV3},
+            #{pojo.LTV4},
+            #{pojo.LTV5},
+            #{pojo.LTV6},
+            #{pojo.LTV7},
+            #{pojo.LTV14},
+            #{pojo.LTV21},
+            #{pojo.LTV30},
+            #{pojo.LTV60},
+            #{pojo.LTV90}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_ltv_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.jobDate!=null"> `job_date`,</if>
+            <if test="pojo.serverId!=null"> `server_id`,</if>
+            <if test="pojo.country!=null"> `country`,</if>
+            <if test="pojo.cname!=null"> `cname`,</if>
+            <if test="pojo.T!=null"> `T`,</if>
+            <if test="pojo.channel!=null"> `channel`,</if>
+            <if test="pojo.deviceType!=null"> `device_type`,</if>
+            <if test="pojo.PUC!=null"> `PUC`,</if>
+            <if test="pojo.NUC!=null"> `NUC`,</if>
+            <if test="pojo.PAC!=null"> `PAC`,</if>
+            <if test="pojo.LTV1!=null"> `LTV1`,</if>
+            <if test="pojo.LTV2!=null"> `LTV2`,</if>
+            <if test="pojo.LTV3!=null"> `LTV3`,</if>
+            <if test="pojo.LTV4!=null"> `LTV4`,</if>
+            <if test="pojo.LTV5!=null"> `LTV5`,</if>
+            <if test="pojo.LTV6!=null"> `LTV6`,</if>
+            <if test="pojo.LTV7!=null"> `LTV7`,</if>
+            <if test="pojo.LTV14!=null"> `LTV14`,</if>
+            <if test="pojo.LTV21!=null"> `LTV21`,</if>
+            <if test="pojo.LTV30!=null"> `LTV30`,</if>
+            <if test="pojo.LTV60!=null"> `LTV60`,</if>
+            <if test="pojo.LTV90!=null"> `LTV90`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.jobDate!=null">#{pojo.jobDate},</if>
+            <if test="pojo.serverId!=null">#{pojo.serverId},</if>
+            <if test="pojo.country!=null">#{pojo.country},</if>
+            <if test="pojo.cname!=null">#{pojo.cname},</if>
+            <if test="pojo.T!=null">#{pojo.T},</if>
+            <if test="pojo.channel!=null">#{pojo.channel},</if>
+            <if test="pojo.deviceType!=null">#{pojo.deviceType},</if>
+            <if test="pojo.PUC!=null">#{pojo.PUC},</if>
+            <if test="pojo.NUC!=null">#{pojo.NUC},</if>
+            <if test="pojo.PAC!=null">#{pojo.PAC},</if>
+            <if test="pojo.LTV1!=null">#{pojo.LTV1},</if>
+            <if test="pojo.LTV2!=null">#{pojo.LTV2},</if>
+            <if test="pojo.LTV3!=null">#{pojo.LTV3},</if>
+            <if test="pojo.LTV4!=null">#{pojo.LTV4},</if>
+            <if test="pojo.LTV5!=null">#{pojo.LTV5},</if>
+            <if test="pojo.LTV6!=null">#{pojo.LTV6},</if>
+            <if test="pojo.LTV7!=null">#{pojo.LTV7},</if>
+            <if test="pojo.LTV14!=null">#{pojo.LTV14},</if>
+            <if test="pojo.LTV21!=null">#{pojo.LTV21},</if>
+            <if test="pojo.LTV30!=null">#{pojo.LTV30},</if>
+            <if test="pojo.LTV60!=null">#{pojo.LTV60},</if>
+            <if test="pojo.LTV90!=null">#{pojo.LTV90},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_ltv_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.channel},
+            #{pojo.deviceType},
+            #{pojo.PUC},
+            #{pojo.NUC},
+            #{pojo.PAC},
+            #{pojo.LTV1},
+            #{pojo.LTV2},
+            #{pojo.LTV3},
+            #{pojo.LTV4},
+            #{pojo.LTV5},
+            #{pojo.LTV6},
+            #{pojo.LTV7},
+            #{pojo.LTV14},
+            #{pojo.LTV21},
+            #{pojo.LTV30},
+            #{pojo.LTV60},
+            #{pojo.LTV90}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_ltv_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.jobDate != null"> `job_date` = #{pojo.jobDate}, </if>
+            <if test="pojo.serverId != null"> `server_id` = #{pojo.serverId}, </if>
+            <if test="pojo.country != null"> `country` = #{pojo.country}, </if>
+            <if test="pojo.cname != null"> `cname` = #{pojo.cname}, </if>
+            <if test="pojo.T != null"> `T` = #{pojo.T}, </if>
+            <if test="pojo.channel != null"> `channel` = #{pojo.channel}, </if>
+            <if test="pojo.deviceType != null"> `device_type` = #{pojo.deviceType}, </if>
+            <if test="pojo.PUC != null"> `PUC` = #{pojo.PUC}, </if>
+            <if test="pojo.NUC != null"> `NUC` = #{pojo.NUC}, </if>
+            <if test="pojo.PAC != null"> `PAC` = #{pojo.PAC}, </if>
+            <if test="pojo.LTV1 != null"> `LTV1` = #{pojo.LTV1}, </if>
+            <if test="pojo.LTV2 != null"> `LTV2` = #{pojo.LTV2}, </if>
+            <if test="pojo.LTV3 != null"> `LTV3` = #{pojo.LTV3}, </if>
+            <if test="pojo.LTV4 != null"> `LTV4` = #{pojo.LTV4}, </if>
+            <if test="pojo.LTV5 != null"> `LTV5` = #{pojo.LTV5}, </if>
+            <if test="pojo.LTV6 != null"> `LTV6` = #{pojo.LTV6}, </if>
+            <if test="pojo.LTV7 != null"> `LTV7` = #{pojo.LTV7}, </if>
+            <if test="pojo.LTV14 != null"> `LTV14` = #{pojo.LTV14}, </if>
+            <if test="pojo.LTV21 != null"> `LTV21` = #{pojo.LTV21}, </if>
+            <if test="pojo.LTV30 != null"> `LTV30` = #{pojo.LTV30}, </if>
+            <if test="pojo.LTV60 != null"> `LTV60` = #{pojo.LTV60}, </if>
+            <if test="pojo.LTV90 != null"> `LTV90` = #{pojo.LTV90} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT * FROM view_bi_ltv_data
+        <where>
+            <if test="startDate != null and endDate !=null" >
+                job_date BETWEEN #{startDate}  AND #{endDate}
+            </if>
+
+            <if test="country != null and country.size()>0" >
+                AND country in
+                <foreach collection="country" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="channel != null and channel.size()>0" >
+                AND channel in
+                <foreach collection="channel" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="deviceType != null" >
+                AND device_Type=#{deviceType}
+            </if>
+        </where>
+        ORDER BY job_date DESC
+
+    </select>
+</mapper>
+

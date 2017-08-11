@@ -94,8 +94,16 @@
         WHERE id = #{pojo.id}
     </update>
     
-    <select id="getList" resultMap="AllColumnMap">
-      SELECT * from bi_current_data ORDER by create_time DESC  limit 12;
+    <select id="getList" parameterType="java.sql.Timestamp" resultMap="AllColumnMap">
+        select * from bi_current_data<where>
+        <if test="date == null " >
+            DATEDIFF(job_date,Now())=0
+        </if>
+        <if test="date != null " >
+            DATEDIFF(job_date,#{date})=0
+        </if>
+
+    </where>
     </select>
 </mapper>
 

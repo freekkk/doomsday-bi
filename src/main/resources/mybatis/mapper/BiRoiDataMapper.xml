@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiRoiDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiRoiData">
+        <result column="id" property="id"/>
+        <result column="job_date" property="jobDate"/>
+        <result column="server_id" property="serverId"/>
+        <result column="country" property="country"/>
+        <result column="cname" property="cname"/>
+        <result column="t" property="T"/>
+        <result column="channel" property="channel"/>
+        <result column="device_type" property="deviceType"/>
+        <result column="PUC" property="PUC"/>
+        <result column="NUC" property="NUC"/>
+        <result column="PAC" property="PAC"/>
+        <result column="cost" property="cost"/>
+        <result column="ROI1" property="ROI1"/>
+        <result column="ROI2" property="ROI2"/>
+        <result column="ROI3" property="ROI3"/>
+        <result column="ROI4" property="ROI4"/>
+        <result column="ROI5" property="ROI5"/>
+        <result column="ROI6" property="ROI6"/>
+        <result column="ROI7" property="ROI7"/>
+        <result column="ROI14" property="ROI14"/>
+        <result column="ROI21" property="ROI21"/>
+        <result column="ROI30" property="ROI30"/>
+        <result column="ROI60" property="ROI60"/>
+        <result column="ROI90" property="ROI90"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `job_date`,
+        `server_id`,
+        `country`,
+        `cname`,
+        `t`,
+        `channel`,
+        `device_type`,
+        `PUC`,
+        `NUC`,
+        `PAC`,
+        `cost`,
+        `ROI1`,
+        `ROI2`,
+        `ROI3`,
+        `ROI4`,
+        `ROI5`,
+        `ROI6`,
+        `ROI7`,
+        `ROI14`,
+        `ROI21`,
+        `ROI30`,
+        `ROI60`,
+        `ROI90`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_roi_data (
+            `id`,
+            `job_date`,
+            `server_id`,
+            `country`,
+            `cname`,
+            `t`,
+            `channel`,
+            `device_type`,
+            `PUC`,
+            `NUC`,
+            `PAC`,
+            `cost`,
+            `ROI1`,
+            `ROI2`,
+            `ROI3`,
+            `ROI4`,
+            `ROI5`,
+            `ROI6`,
+            `ROI7`,
+            `ROI14`,
+            `ROI21`,
+            `ROI30`,
+            `ROI60`,
+            `ROI90`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.channel},
+            #{pojo.deviceType},
+            #{pojo.PUC},
+            #{pojo.NUC},
+            #{pojo.PAC},
+            #{pojo.cost},
+            #{pojo.ROI1},
+            #{pojo.ROI2},
+            #{pojo.ROI3},
+            #{pojo.ROI4},
+            #{pojo.ROI5},
+            #{pojo.ROI6},
+            #{pojo.ROI7},
+            #{pojo.ROI14},
+            #{pojo.ROI21},
+            #{pojo.ROI30},
+            #{pojo.ROI60},
+            #{pojo.ROI90}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_roi_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.jobDate!=null"> `job_date`,</if>
+            <if test="pojo.serverId!=null"> `server_id`,</if>
+            <if test="pojo.country!=null"> `country`,</if>
+            <if test="pojo.cname!=null"> `cname`,</if>
+            <if test="pojo.T!=null"> `t`,</if>
+            <if test="pojo.channel!=null"> `channel`,</if>
+            <if test="pojo.deviceType!=null"> `device_type`,</if>
+            <if test="pojo.PUC!=null"> `PUC`,</if>
+            <if test="pojo.NUC!=null"> `NUC`,</if>
+            <if test="pojo.PAC!=null"> `PAC`,</if>
+            <if test="pojo.cost!=null"> `cost`,</if>
+            <if test="pojo.ROI1!=null"> `ROI1`,</if>
+            <if test="pojo.ROI2!=null"> `ROI2`,</if>
+            <if test="pojo.ROI3!=null"> `ROI3`,</if>
+            <if test="pojo.ROI4!=null"> `ROI4`,</if>
+            <if test="pojo.ROI5!=null"> `ROI5`,</if>
+            <if test="pojo.ROI6!=null"> `ROI6`,</if>
+            <if test="pojo.ROI7!=null"> `ROI7`,</if>
+            <if test="pojo.ROI14!=null"> `ROI14`,</if>
+            <if test="pojo.ROI21!=null"> `ROI21`,</if>
+            <if test="pojo.ROI30!=null"> `ROI30`,</if>
+            <if test="pojo.ROI60!=null"> `ROI60`,</if>
+            <if test="pojo.ROI90!=null"> `ROI90`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.jobDate!=null">#{pojo.jobDate},</if>
+            <if test="pojo.serverId!=null">#{pojo.serverId},</if>
+            <if test="pojo.country!=null">#{pojo.country},</if>
+            <if test="pojo.cname!=null">#{pojo.cname},</if>
+            <if test="pojo.T!=null">#{pojo.T},</if>
+            <if test="pojo.channel!=null">#{pojo.channel},</if>
+            <if test="pojo.deviceType!=null">#{pojo.deviceType},</if>
+            <if test="pojo.PUC!=null">#{pojo.PUC},</if>
+            <if test="pojo.NUC!=null">#{pojo.NUC},</if>
+            <if test="pojo.PAC!=null">#{pojo.PAC},</if>
+            <if test="pojo.cost!=null">#{pojo.cost},</if>
+            <if test="pojo.ROI1!=null">#{pojo.ROI1},</if>
+            <if test="pojo.ROI2!=null">#{pojo.ROI2},</if>
+            <if test="pojo.ROI3!=null">#{pojo.ROI3},</if>
+            <if test="pojo.ROI4!=null">#{pojo.ROI4},</if>
+            <if test="pojo.ROI5!=null">#{pojo.ROI5},</if>
+            <if test="pojo.ROI6!=null">#{pojo.ROI6},</if>
+            <if test="pojo.ROI7!=null">#{pojo.ROI7},</if>
+            <if test="pojo.ROI14!=null">#{pojo.ROI14},</if>
+            <if test="pojo.ROI21!=null">#{pojo.ROI21},</if>
+            <if test="pojo.ROI30!=null">#{pojo.ROI30},</if>
+            <if test="pojo.ROI60!=null">#{pojo.ROI60},</if>
+            <if test="pojo.ROI90!=null">#{pojo.ROI90},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_roi_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.country},
+            #{pojo.cname},
+            #{pojo.T},
+            #{pojo.channel},
+            #{pojo.deviceType},
+            #{pojo.PUC},
+            #{pojo.NUC},
+            #{pojo.PAC},
+            #{pojo.cost},
+            #{pojo.ROI1},
+            #{pojo.ROI2},
+            #{pojo.ROI3},
+            #{pojo.ROI4},
+            #{pojo.ROI5},
+            #{pojo.ROI6},
+            #{pojo.ROI7},
+            #{pojo.ROI14},
+            #{pojo.ROI21},
+            #{pojo.ROI30},
+            #{pojo.ROI60},
+            #{pojo.ROI90}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_roi_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.jobDate != null"> `job_date` = #{pojo.jobDate}, </if>
+            <if test="pojo.serverId != null"> `server_id` = #{pojo.serverId}, </if>
+            <if test="pojo.country != null"> `country` = #{pojo.country}, </if>
+            <if test="pojo.cname != null"> `cname` = #{pojo.cname}, </if>
+            <if test="pojo.T != null"> `t` = #{pojo.T}, </if>
+            <if test="pojo.channel != null"> `channel` = #{pojo.channel}, </if>
+            <if test="pojo.deviceType != null"> `device_type` = #{pojo.deviceType}, </if>
+            <if test="pojo.PUC != null"> `PUC` = #{pojo.PUC}, </if>
+            <if test="pojo.NUC != null"> `NUC` = #{pojo.NUC}, </if>
+            <if test="pojo.PAC != null"> `PAC` = #{pojo.PAC}, </if>
+            <if test="pojo.cost != null"> `cost` = #{pojo.cost}, </if>
+            <if test="pojo.ROI1 != null"> `ROI1` = #{pojo.ROI1}, </if>
+            <if test="pojo.ROI2 != null"> `ROI2` = #{pojo.ROI2}, </if>
+            <if test="pojo.ROI3 != null"> `ROI3` = #{pojo.ROI3}, </if>
+            <if test="pojo.ROI4 != null"> `ROI4` = #{pojo.ROI4}, </if>
+            <if test="pojo.ROI5 != null"> `ROI5` = #{pojo.ROI5}, </if>
+            <if test="pojo.ROI6 != null"> `ROI6` = #{pojo.ROI6}, </if>
+            <if test="pojo.ROI7 != null"> `ROI7` = #{pojo.ROI7}, </if>
+            <if test="pojo.ROI14 != null"> `ROI14` = #{pojo.ROI14}, </if>
+            <if test="pojo.ROI21 != null"> `ROI21` = #{pojo.ROI21}, </if>
+            <if test="pojo.ROI30 != null"> `ROI30` = #{pojo.ROI30}, </if>
+            <if test="pojo.ROI60 != null"> `ROI60` = #{pojo.ROI60}, </if>
+            <if test="pojo.ROI90 != null"> `ROI90` = #{pojo.ROI90} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT * FROM view_bi_roi_data
+        <where>
+            <if test="startDate != null and endDate !=null" >
+                job_date BETWEEN #{startDate}  AND #{endDate}
+            </if>
+
+            <if test="country != null and country.size()>0" >
+                AND country in
+                <foreach collection="country" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="channel != null and channel.size()>0" >
+                AND channel in
+                <foreach collection="channel" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="deviceType != null" >
+                AND device_Type=#{deviceType}
+            </if>
+        </where>
+        ORDER BY job_date DESC
+
+    </select>
+</mapper>
+

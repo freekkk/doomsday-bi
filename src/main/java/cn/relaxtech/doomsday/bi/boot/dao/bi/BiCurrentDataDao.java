@@ -4,6 +4,7 @@ import cn.relaxtech.doomsday.bi.boot.entity.bi.BiCurrentData;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Mapper
@@ -16,5 +17,5 @@ public interface BiCurrentDataDao {
 
     int update(@Param("pojo") BiCurrentData pojo);
 
-    List<BiCurrentData> getList();
+    List<BiCurrentData> getList(Timestamp date);
 }

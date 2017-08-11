@@ -1,17 +1,13 @@
 package cn.relaxtech.doomsday.bi.boot.controller;
 
 import cn.relaxtech.doomsday.bi.boot.entity.bi.*;
-import cn.relaxtech.doomsday.bi.boot.service.bi.BiCurrentDataService;
-import cn.relaxtech.doomsday.bi.boot.service.bi.BiGeneralDataDetailService;
-import cn.relaxtech.doomsday.bi.boot.service.bi.BiGeneralDataService;
-import cn.relaxtech.doomsday.bi.boot.service.bi.BiLtvDataService;
-import io.swagger.annotations.ApiImplicitParam;
+import cn.relaxtech.doomsday.bi.boot.service.bi.*;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Slf4j
@@ -31,6 +27,9 @@ public class ApiController {
 
     @Autowired
     private BiLtvDataService biLtvDataService;
+
+    @Autowired
+    private BiRoiDataService biRoiDataService;
 
 
 
@@ -58,11 +57,20 @@ public class ApiController {
 		return biLtvDataService.getList(params);
 	}
 
-	@ApiOperation(value="bi实时数据")
-	@RequestMapping(value="bicurrentdata",method = RequestMethod.GET)
-	public List<BiCurrentData> bicurrentdata()
+
+	@ApiOperation(value="bi ROI数据")
+	@RequestMapping(value="biroi",method ={RequestMethod.POST})
+	public List<BiRoiData> BiROI(@RequestBody SearchParams params)
 	{
 
-		return biCurrentDataService.getList();
+		return biRoiDataService.getList(params);
+	}
+
+	@ApiOperation(value="bi实时数据")
+	@RequestMapping(value="bicurrentdata",method = RequestMethod.GET)
+	public List<BiCurrentData> bicurrentdata( Long date)
+	{
+		Timestamp time=new Timestamp(date);
+		return biCurrentDataService.getList(time);
 	}
 }

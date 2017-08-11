@@ -2,6 +2,7 @@ package cn.relaxtech.doomsday.bi.boot.service.bi;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.BiCurrentData;
 import cn.relaxtech.doomsday.bi.boot.dao.bi.BiCurrentDataDao;
@@ -28,9 +29,9 @@ public class BiCurrentDataService{
         return biCurrentDataDao.update(pojo);
     }
 
-    public List<BiCurrentData> getList()
+    public List<BiCurrentData> getList(Timestamp date)
     {
-        return biCurrentDataDao.getList();
+        return biCurrentDataDao.getList(date);
     }
 
 }

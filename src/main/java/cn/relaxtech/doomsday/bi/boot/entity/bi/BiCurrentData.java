@@ -20,7 +20,8 @@ public class BiCurrentData {
     private Integer DAU;
     private Double  PAC;
     private Integer RUC;
-    @JsonFormat(pattern = "MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "HH:mm:ss",timezone="GMT+8")
+    //@JsonFormat(pattern = "HH:mm:ss")
     private Timestamp createTime;
 
 }

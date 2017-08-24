@@ -31,7 +31,11 @@ public class ApiController {
     @Autowired
     private BiRoiDataService biRoiDataService;
 
+    @Autowired
+    private BiMoneyDataService biMoneyDataService;
 
+    @Autowired
+    private BiMoneyChangeDataService biMoneyChangeDataService;
 
 	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
@@ -68,9 +72,25 @@ public class ApiController {
 
 	@ApiOperation(value="bi实时数据")
 	@RequestMapping(value="bicurrentdata",method = RequestMethod.GET)
-	public List<BiCurrentData> bicurrentdata( Long date)
+	public List<BiCurrentData> BiCurrentData( Long date)
 	{
 		Timestamp time=new Timestamp(date);
 		return biCurrentDataService.getList(time);
+	}
+
+	@ApiOperation(value="bi 钻石消耗数据")
+	@RequestMapping(value="bimoney",method ={RequestMethod.GET,RequestMethod.POST})
+	public List<BiMoneyData> BiMoneyData(@RequestBody SearchParams params)
+	{
+
+		return biMoneyDataService.getList(params);
+	}
+
+	@ApiOperation(value="bi 钻石变化数据")
+	@RequestMapping(value="bimoneychange",method ={RequestMethod.GET,RequestMethod.POST})
+	public List<BiMoneyChangeData> BiMoneyChangeData(@RequestBody SearchParams params)
+	{
+
+		return biMoneyChangeDataService.getList(params);
 	}
 }

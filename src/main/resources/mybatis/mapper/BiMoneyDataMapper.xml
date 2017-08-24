@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiMoneyDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiMoneyData">
+        <result column="id" property="id"/>
+        <result column="job_date" property="jobDate"/>
+        <result column="reason" property="reason"/>
+        <result column="creason" property="creason"/>
+        <result column="platform_id" property="platformId"/>
+        <result column="ifcharge" property="ifCharge"/>
+        <result column="currency" property="currency"/>
+        <result column="delta" property="delta"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `job_date`,
+        `reason`,
+        `creason`,
+        `platform_id`,
+        `ifcharge`,
+        `currency`,
+        `delta`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_money_data (
+            `id`,
+            `job_date`,
+            `reason`,
+            `creason`,
+            `platform_id`,
+            `ifcharge`,
+            `currency`,
+            `delta`,
+            `create_time`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.reason},
+            #{pojo.creason},
+            #{pojo.platformId},
+            #{pojo.ifCharge},
+            #{pojo.currency},
+            #{pojo.delta},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_money_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.jobDate!=null"> `job_date`,</if>
+            <if test="pojo.reason!=null"> `reason`,</if>
+            <if test="pojo.creason!=null"> `creason`,</if>
+            <if test="pojo.platformId!=null"> `platform_id`,</if>
+            <if test="pojo.ifCharge!=null"> `ifcharge`,</if>
+            <if test="pojo.currency!=null"> `currency`,</if>
+            <if test="pojo.delta!=null"> `delta`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.jobDate!=null">#{pojo.jobDate},</if>
+            <if test="pojo.reason!=null">#{pojo.reason},</if>
+            <if test="pojo.creason!=null">#{pojo.creason},</if>
+            <if test="pojo.platformId!=null">#{pojo.platformId},</if>
+            <if test="pojo.ifCharge!=null">#{pojo.ifCharge},</if>
+            <if test="pojo.currency!=null">#{pojo.currency},</if>
+            <if test="pojo.delta!=null">#{pojo.delta},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_money_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.reason},
+            #{pojo.creason},
+            #{pojo.platformId},
+            #{pojo.ifCharge},
+            #{pojo.currency},
+            #{pojo.delta},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_money_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.jobDate != null"> `job_date` = #{pojo.jobDate}, </if>
+            <if test="pojo.reason != null"> `reason` = #{pojo.reason}, </if>
+            <if test="pojo.creason != null"> `creason` = #{pojo.creason}, </if>
+            <if test="pojo.platformId != null"> `platform_id` = #{pojo.platformId}, </if>
+            <if test="pojo.ifCharge != null"> `ifcharge` = #{pojo.ifCharge}, </if>
+            <if test="pojo.currency != null"> `currency` = #{pojo.currency}, </if>
+            <if test="pojo.delta != null"> `delta` = #{pojo.delta}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT * FROM view_bi_money_data
+        <where>
+            <if test="startDate != null and endDate !=null" >
+                job_date BETWEEN #{startDate}  AND #{endDate}
+            </if>
+        </where>
+
+        ORDER BY delta DESC
+
+    </select>
+</mapper>
+

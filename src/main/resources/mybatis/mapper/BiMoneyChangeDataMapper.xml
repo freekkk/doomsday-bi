@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiMoneyChangeDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiMoneyChangeData">
+        <result column="id" property="id"/>
+        <result column="job_date" property="jobDate"/>
+        <result column="server_id" property="serverId"/>
+        <result column="re_day_money_left" property="reDayMoneyLeft"/>
+        <result column="money_prod" property="moneyProd"/>
+        <result column="money_expend" property="moneyExpend"/>
+        <result column="day_money_left" property="dayMoneyLeft"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `job_date`,
+        `server_id`,
+        `re_day_money_left`,
+        `money_prod`,
+        `money_expend`,
+        `day_money_left`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_money_change_data (
+            `id`,
+            `job_date`,
+            `server_id`,
+            `re_day_money_left`,
+            `money_prod`,
+            `money_expend`,
+            `day_money_left`,
+            `create_time`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.reDayMoneyLeft},
+            #{pojo.moneyProd},
+            #{pojo.moneyExpend},
+            #{pojo.dayMoneyLeft},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_money_change_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.jobDate!=null"> `job_date`,</if>
+            <if test="pojo.serverId!=null"> `server_id`,</if>
+            <if test="pojo.reDayMoneyLeft!=null"> `re_day_money_left`,</if>
+            <if test="pojo.moneyProd!=null"> `money_prod`,</if>
+            <if test="pojo.moneyExpend!=null"> `money_expend`,</if>
+            <if test="pojo.dayMoneyLeft!=null"> `day_money_left`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.jobDate!=null">#{pojo.jobDate},</if>
+            <if test="pojo.serverId!=null">#{pojo.serverId},</if>
+            <if test="pojo.reDayMoneyLeft!=null">#{pojo.reDayMoneyLeft},</if>
+            <if test="pojo.moneyProd!=null">#{pojo.moneyProd},</if>
+            <if test="pojo.moneyExpend!=null">#{pojo.moneyExpend},</if>
+            <if test="pojo.dayMoneyLeft!=null">#{pojo.dayMoneyLeft},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_money_change_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.jobDate},
+            #{pojo.serverId},
+            #{pojo.reDayMoneyLeft},
+            #{pojo.moneyProd},
+            #{pojo.moneyExpend},
+            #{pojo.dayMoneyLeft},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_money_change_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.jobDate != null"> `job_date` = #{pojo.jobDate}, </if>
+            <if test="pojo.serverId != null"> `server_id` = #{pojo.serverId}, </if>
+            <if test="pojo.reDayMoneyLeft != null"> `re_day_money_left` = #{pojo.reDayMoneyLeft}, </if>
+            <if test="pojo.moneyProd != null"> `money_prod` = #{pojo.moneyProd}, </if>
+            <if test="pojo.moneyExpend != null"> `money_expend` = #{pojo.moneyExpend}, </if>
+            <if test="pojo.dayMoneyLeft != null"> `day_money_left` = #{pojo.dayMoneyLeft}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT * FROM bi_money_change_data
+        <where>
+            <if test="startDate != null and endDate !=null" >
+                job_date BETWEEN #{startDate}  AND #{endDate}
+            </if>
+        </where>
+
+    </select>
+</mapper>
+

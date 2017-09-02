@@ -20,5 +20,4 @@ public class DruidProperties {
     private int     initialSize;
     private boolean testOnBorrow;
 
-
 }

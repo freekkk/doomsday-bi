@@ -12,12 +12,17 @@ import cn.relaxtech.doomsday.bi.boot.dao.pointlog.BaseEventLogDao;
 @Service
 public class BaseEventLogService{
 
+    private static final String prefixTableName = "base_event_log";
+    
     @Autowired
     private BaseEventLogDao baseEventLogDao;
 
     public int insert(BaseEventLog pojo){
-        pojo.setLogDate(DateUtil.getNowTimeDateFormat("yyyy_MM_dd"));
-        return baseEventLogDao.insert(pojo);
+
+        String nowDate=DateUtil.getNowTimeDateFormat("yyyy_MM_dd");
+        pojo.setLogDate(nowDate);
+        String tableName=prefixTableName+"_"+nowDate;
+        return baseEventLogDao.insert(pojo,tableName);
     }
 
     public int update(BaseEventLog pojo){

@@ -8,7 +8,7 @@ import cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog;
 
 @Mapper
 public interface BaseEventLogDao {
-    int insert(@Param("pojo") BaseEventLog pojo);
+    int insert(@Param("pojo") BaseEventLog pojo,@Param("tableName") String tableName);
 
     int insertList(@Param("pojos") List<BaseEventLog> pojo);
 

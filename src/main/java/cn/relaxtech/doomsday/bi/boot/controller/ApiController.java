@@ -37,6 +37,9 @@ public class ApiController {
     @Autowired
     private BiMoneyChangeDataService biMoneyChangeDataService;
 
+    @Autowired
+    private BiLibaoDataService biLibaoDataService;
+
 	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
 	public List<BiGeneralData> BiGeneralData(@RequestBody SearchParams params)
@@ -92,5 +95,19 @@ public class ApiController {
 	{
 
 		return biMoneyChangeDataService.getList(params);
+	}
+
+	@ApiOperation(value="bi 礼包数据")
+	@RequestMapping(value="bilibao",method ={RequestMethod.GET,RequestMethod.POST})
+	public List<BiLibaoData> BiLibaoData(@RequestBody SearchParams params)
+	{
+		return biLibaoDataService.getList(params);
+	}
+
+	@ApiOperation(value="bi 礼包详细数据")
+	@RequestMapping(value="bilibaodetail",method ={RequestMethod.GET,RequestMethod.POST})
+	public List<BiLibaoData> BiLibaoDataDetail(@RequestBody SearchParams params)
+	{
+		return biLibaoDataService.getListDetail(params);
 	}
 }

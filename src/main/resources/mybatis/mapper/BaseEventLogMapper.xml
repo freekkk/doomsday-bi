@@ -65,7 +65,7 @@
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO base_event_log (
+        INSERT INTO ${tableName} (
             `id`,
             `player_id`,
             `player_name`,

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiLibaoDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiLibaoData">
+        <result column="id" property="id"/>
+        <result column="libao_name" property="libaoName"/>
+        <result column="libao_id" property="libaoId"/>
+        <result column="human_count" property="humanCount"/>
+        <result column="libao_count" property="libaoCount"/>
+        <result column="money_num" property="moneyNum"/>
+        <result column="total_num" property="totalNum"/>
+        <result column="percent" property="percent"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `libao_name`,
+        `libao_id`,
+        `human_count`,
+        `libao_count`,
+        `money_num`,
+        `total_num`,
+        `percent`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_libao_data (
+            `id`,
+            `libao_name`,
+            `human_count`,
+            `libao_count`,
+            `money_num`,
+            `total_num`,
+            `percent`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.libaoName},
+            #{pojo.humanCount},
+            #{pojo.libaoCount},
+            #{pojo.moneyNum},
+            #{pojo.totalNum},
+            #{pojo.percent}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_libao_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.libaoName!=null"> `libao_name`,</if>
+            <if test="pojo.humanCount!=null"> `human_count`,</if>
+            <if test="pojo.libaoCount!=null"> `libao_count`,</if>
+            <if test="pojo.moneyNum!=null"> `money_num`,</if>
+            <if test="pojo.totalNum!=null"> `total_num`,</if>
+            <if test="pojo.percent!=null"> `percent`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.libaoName!=null">#{pojo.libaoName},</if>
+            <if test="pojo.humanCount!=null">#{pojo.humanCount},</if>
+            <if test="pojo.libaoCount!=null">#{pojo.libaoCount},</if>
+            <if test="pojo.moneyNum!=null">#{pojo.moneyNum},</if>
+            <if test="pojo.totalNum!=null">#{pojo.totalNum},</if>
+            <if test="pojo.percent!=null">#{pojo.percent},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_libao_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.libaoName},
+            #{pojo.humanCount},
+            #{pojo.libaoCount},
+            #{pojo.moneyNum},
+            #{pojo.totalNum},
+            #{pojo.percent}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_libao_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.libaoName != null"> `libao_name` = #{pojo.libaoName}, </if>
+            <if test="pojo.humanCount != null"> `human_count` = #{pojo.humanCount}, </if>
+            <if test="pojo.libaoCount != null"> `libao_count` = #{pojo.libaoCount}, </if>
+            <if test="pojo.moneyNum != null"> `money_num` = #{pojo.moneyNum}, </if>
+            <if test="pojo.totalNum != null"> `total_num` = #{pojo.totalNum}, </if>
+            <if test="pojo.percent != null"> `percent` = #{pojo.percent} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT *,ROUND(money_num/total_num*100,2) as percent from (SELECT
+            libao_name,
+            COUNT(DISTINCT human_id) AS human_count,
+            count(libao_id) AS libao_count,
+            ROUND(SUM(money_num),2) AS money_num,
+            ROUND((select SUM(money_num) FROM (SELECT
+            libao_name,
+            COUNT(DISTINCT human_id) AS hcount,
+            count(libao_id) AS lcount,
+            SUM(money_num) AS money_num
+        FROM
+            charge_log
+        WHERE job_date BETWEEN #{startDate} AND #{endDate}
+        GROUP BY
+            libao_name
+        ) a),2)  as total_num
+        FROM
+            charge_log
+        WHERE job_date BETWEEN #{startDate} AND #{endDate}
+        GROUP BY
+            libao_name) t ORDER BY money_num desc;
+    </select>
+
+    <select id="getListDetail" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
+        SELECT *,ROUND(money_num/total_num*100,2) as percent from (SELECT
+	libao_name,libao_id,
+	COUNT(DISTINCT human_id) AS human_count,
+	count(libao_id) AS libao_count,
+	ROUND(SUM(money_num),2) AS money_num,
+	ROUND((select SUM(money_num) FROM (SELECT
+	libao_name,
+	COUNT(DISTINCT human_id) AS hcount,
+	count(libao_id) AS lcount,
+	SUM(money_num) AS money_num
+        FROM
+            charge_log
+        WHERE job_date BETWEEN #{startDate} AND #{endDate}
+        GROUP BY
+            libao_id
+        ) a),2) as total_num
+        FROM
+            charge_log
+        WHERE job_date BETWEEN #{startDate} AND #{endDate}
+        GROUP BY
+            libao_id) t ORDER BY money_num desc;
+    </select>
+</mapper>
+

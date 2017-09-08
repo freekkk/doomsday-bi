@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiMissionDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiMissionData">
+        <result column="id" property="id"/>
+        <result column="mission_id" property="missionId"/>
+        <result column="mission_name" property="missionName"/>
+        <result column="get_count" property="getCount"/>
+        <result column="finish_count" property="finishCount"/>
+        <result column="award_count" property="awardCount"/>
+        <result column="surplus_percent" property="surplusPercent"/>
+        <result column="lost_percent" property="lostPercent"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `mission_id`,
+        `mission_name`,
+        `get_count`,
+        `finish_count`,
+        `award_count`,
+        `surplus_percent`,
+        `lost_percent`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_mission_data (
+            `id`,
+            `mission_id`,
+            `mission_name`,
+            `get_count`,
+            `finish_count`,
+            `award_count`,
+            `surplus_percent`,
+            `lost_percent`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.missionId},
+            #{pojo.missionName},
+            #{pojo.getCount},
+            #{pojo.finishCount},
+            #{pojo.awardCount},
+            #{pojo.surplusPercent},
+            #{pojo.lostPercent}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO bi_mission_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.missionId!=null"> `mission_id`,</if>
+            <if test="pojo.missionName!=null"> `mission_name`,</if>
+            <if test="pojo.getCount!=null"> `get_count`,</if>
+            <if test="pojo.finishCount!=null"> `finish_count`,</if>
+            <if test="pojo.awardCount!=null"> `award_count`,</if>
+            <if test="pojo.surplusPercent!=null"> `surplus_percent`,</if>
+            <if test="pojo.lostPercent!=null"> `lost_percent`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.missionId!=null">#{pojo.missionId},</if>
+            <if test="pojo.missionName!=null">#{pojo.missionName},</if>
+            <if test="pojo.getCount!=null">#{pojo.getCount},</if>
+            <if test="pojo.finishCount!=null">#{pojo.finishCount},</if>
+            <if test="pojo.awardCount!=null">#{pojo.awardCount},</if>
+            <if test="pojo.surplusPercent!=null">#{pojo.surplusPercent},</if>
+            <if test="pojo.lostPercent!=null">#{pojo.lostPercent},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO bi_mission_data (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.missionId},
+            #{pojo.missionName},
+            #{pojo.getCount},
+            #{pojo.finishCount},
+            #{pojo.awardCount},
+            #{pojo.surplusPercent},
+            #{pojo.lostPercent}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE bi_mission_data
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.missionId != null"> `mission_id` = #{pojo.missionId}, </if>
+            <if test="pojo.missionName != null"> `mission_name` = #{pojo.missionName}, </if>
+            <if test="pojo.getCount != null"> `get_count` = #{pojo.getCount}, </if>
+            <if test="pojo.finishCount != null"> `finish_count` = #{pojo.finishCount}, </if>
+            <if test="pojo.awardCount != null"> `award_count` = #{pojo.awardCount}, </if>
+            <if test="pojo.surplusPercent != null"> `surplus_percent` = #{pojo.surplusPercent}, </if>
+            <if test="pojo.lostPercent != null"> `lost_percent` = #{pojo.lostPercent} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap" statementType="CALLABLE">
+      {call proc_get_mission_data(#{startDate,mode=IN},#{endDate,mode=IN},#{countryStr,mode=IN})}
+    </select>
+
+</mapper>
+

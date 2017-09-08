@@ -40,9 +40,12 @@ public class ApiController {
     @Autowired
     private BiLibaoDataService biLibaoDataService;
 
+    @Autowired
+    private BiMissionDataService biMissionDataService;
+
 	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
-	public List<BiGeneralData> BiGeneralData(@RequestBody SearchParams params)
+	public List<BiGeneralData> biGeneralData(@RequestBody SearchParams params)
 	{
 		return biGeneralDataService.getList(params);
 	}
@@ -50,7 +53,7 @@ public class ApiController {
 	@ApiOperation(value="bi总体数据明细")
 	//@ApiImplicitParam(name = "params",  = "查询参数", required = true,dataType = "SearchParams")
 	@RequestMapping(value="bigeneraldatadetail",method = RequestMethod.POST)
-	public List<BiGeneralDataDetail> BiGeneralDataDetail(@RequestBody SearchParams params)
+	public List<BiGeneralDataDetail> biGeneralDataDetail(@RequestBody SearchParams params)
 	{
 
 		return biGeneralDataDetailService.getList(params);
@@ -58,7 +61,7 @@ public class ApiController {
 
 	@ApiOperation(value="bi LTV数据")
 	@RequestMapping(value="biltv",method ={RequestMethod.POST})
-	public List<BiLtvData> BiLTV(@RequestBody SearchParams params)
+	public List<BiLtvData> biLTV(@RequestBody SearchParams params)
 	{
 
 		return biLtvDataService.getList(params);
@@ -67,7 +70,7 @@ public class ApiController {
 
 	@ApiOperation(value="bi ROI数据")
 	@RequestMapping(value="biroi",method ={RequestMethod.POST})
-	public List<BiRoiData> BiROI(@RequestBody SearchParams params)
+	public List<BiRoiData> biROI(@RequestBody SearchParams params)
 	{
 
 		return biRoiDataService.getList(params);
@@ -75,7 +78,7 @@ public class ApiController {
 
 	@ApiOperation(value="bi实时数据")
 	@RequestMapping(value="bicurrentdata",method = RequestMethod.GET)
-	public List<BiCurrentData> BiCurrentData( Long date)
+	public List<BiCurrentData> biCurrentData( Long date)
 	{
 		Timestamp time=new Timestamp(date);
 		return biCurrentDataService.getList(time);
@@ -83,7 +86,7 @@ public class ApiController {
 
 	@ApiOperation(value="bi 钻石消耗数据")
 	@RequestMapping(value="bimoney",method ={RequestMethod.GET,RequestMethod.POST})
-	public List<BiMoneyData> BiMoneyData(@RequestBody SearchParams params)
+	public List<BiMoneyData> biMoneyData(@RequestBody SearchParams params)
 	{
 
 		return biMoneyDataService.getList(params);
@@ -91,7 +94,7 @@ public class ApiController {
 
 	@ApiOperation(value="bi 钻石变化数据")
 	@RequestMapping(value="bimoneychange",method ={RequestMethod.GET,RequestMethod.POST})
-	public List<BiMoneyChangeData> BiMoneyChangeData(@RequestBody SearchParams params)
+	public List<BiMoneyChangeData> biMoneyChangeData(@RequestBody SearchParams params)
 	{
 
 		return biMoneyChangeDataService.getList(params);
@@ -99,15 +102,22 @@ public class ApiController {
 
 	@ApiOperation(value="bi 礼包数据")
 	@RequestMapping(value="bilibao",method ={RequestMethod.GET,RequestMethod.POST})
-	public List<BiLibaoData> BiLibaoData(@RequestBody SearchParams params)
+	public List<BiLibaoData> biLibaoData(@RequestBody SearchParams params)
 	{
 		return biLibaoDataService.getList(params);
 	}
 
 	@ApiOperation(value="bi 礼包详细数据")
 	@RequestMapping(value="bilibaodetail",method ={RequestMethod.GET,RequestMethod.POST})
-	public List<BiLibaoData> BiLibaoDataDetail(@RequestBody SearchParams params)
+	public List<BiLibaoData> biLibaoDataDetail(@RequestBody SearchParams params)
 	{
 		return biLibaoDataService.getListDetail(params);
+	}
+
+	@ApiOperation(value="bi 任务完成数据")
+	@RequestMapping(value="bimission",method ={RequestMethod.GET,RequestMethod.POST})
+	public List<BiMissionData> biMission(@RequestBody SearchParams params)
+	{
+		return biMissionDataService.getList(params);
 	}
 }

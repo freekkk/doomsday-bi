@@ -17,6 +17,7 @@ public class SearchParams {
     private List<String> country;
     private String countryStr;
     private List<String> channel;
+    private String channelStr;
     private String deviceType;
 
     public void setCountry(List<String> country) {

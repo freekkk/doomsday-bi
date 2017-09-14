@@ -14,22 +14,6 @@ public class BiLtvDataService{
     @Resource
     private BiLtvDataDao biLtvDataDao;
 
-    public int insert(BiLtvData pojo){
-        return biLtvDataDao.insert(pojo);
-    }
-
-    public int insertSelective(BiLtvData pojo){
-        return biLtvDataDao.insertSelective(pojo);
-    }
-
-    public int insertList(List<BiLtvData> pojos){
-        return biLtvDataDao.insertList(pojos);
-    }
-
-    public int update(BiLtvData pojo){
-        return biLtvDataDao.update(pojo);
-    }
-
     public List<BiLtvData> getList(SearchParams params)
     {
         return biLtvDataDao.getList(params);

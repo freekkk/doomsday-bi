@@ -18,16 +18,16 @@
         <setting name="useGeneratedKeys" value="true"/>
     </settings>
 
-    <typeHandlers>
-        <typeHandler handler="cn.relaxtech.doomsday.bi.boot.utils.mybatis.JsonNodeValueTypeHandler" javaType="com.alibaba.fastjson.JSONObject" jdbcType="json"/>
-        <typeHandler handler="cn.relaxtech.doomsday.bi.boot.utils.mybatis.TreeNodeTypeHandler"/>
-    </typeHandlers>
-
-	<typeAliases>
+    <typeAliases>
         <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.Roi" alias="Roi"/>
         <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" alias="SystemConfParams"/>
         <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" alias="SearchParams"/>
     </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="cn.relaxtech.doomsday.bi.boot.utils.mybatis.JsonNodeValueTypeHandler" javaType="com.alibaba.fastjson.JSONObject" jdbcType="json"/>
+        <typeHandler handler="cn.relaxtech.doomsday.bi.boot.utils.mybatis.TreeNodeTypeHandler"/>
+    </typeHandlers>
 
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageHelper">

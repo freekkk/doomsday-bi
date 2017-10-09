@@ -1,6 +1,9 @@
 package cn.relaxtech.doomsday.bi.boot.controller;
 
+import cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.*;
+import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfServer;
+import cn.relaxtech.doomsday.bi.boot.service.SystemConfService;
 import cn.relaxtech.doomsday.bi.boot.service.bi.*;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +45,9 @@ public class ApiController {
 
     @Autowired
     private BiMissionDataService biMissionDataService;
+
+    @Autowired
+    private SystemConfService systemConfService;
 
 	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
@@ -93,31 +99,44 @@ public class ApiController {
 	}
 
 	@ApiOperation(value="bi 钻石变化数据")
-	@RequestMapping(value="bimoneychange",method ={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="bimoneychange",method ={RequestMethod.POST})
 	public List<BiMoneyChangeData> biMoneyChangeData(@RequestBody SearchParams params)
 	{
-
 		return biMoneyChangeDataService.getList(params);
 	}
 
 	@ApiOperation(value="bi 礼包数据")
-	@RequestMapping(value="bilibao",method ={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="bilibao",method ={RequestMethod.POST})
 	public List<BiLibaoData> biLibaoData(@RequestBody SearchParams params)
 	{
 		return biLibaoDataService.getList(params);
 	}
 
 	@ApiOperation(value="bi 礼包详细数据")
-	@RequestMapping(value="bilibaodetail",method ={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="bilibaodetail",method ={RequestMethod.POST})
 	public List<BiLibaoData> biLibaoDataDetail(@RequestBody SearchParams params)
 	{
 		return biLibaoDataService.getListDetail(params);
 	}
 
 	@ApiOperation(value="bi 任务完成数据")
-	@RequestMapping(value="bimission",method ={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="bimission",method ={RequestMethod.POST})
 	public List<BiMissionData> biMission(@RequestBody SearchParams params)
 	{
 		return biMissionDataService.getList(params);
+	}
+
+	@ApiOperation(value="系统设置")
+	@RequestMapping(value="systemconf",method ={RequestMethod.POST})
+	public String systemConf(@RequestBody SystemConfParams params)
+	{
+		return systemConfService.execProc(params);
+	}
+
+	@ApiOperation(value="获取服务器列表")
+	@RequestMapping(value="getserverlist",method ={RequestMethod.GET})
+	public List<ConfServer> getServerLsit(String ex)
+	{
+		return systemConfService.getConfServer(ex);
 	}
 }

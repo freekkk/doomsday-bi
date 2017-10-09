@@ -1,9 +1,8 @@
-package cn.relaxtech.doomsday.bi.boot.entity.pointLog;
+package cn.relaxtech.doomsday.bi.boot.entity.pointlog;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 /**
  * log基础信息。只记录事件产生的次数 使用

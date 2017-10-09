@@ -1,8 +1,8 @@
-package cn.relaxtech.doomsday.bi.boot.eventHandler;
+package cn.relaxtech.doomsday.bi.boot.handler;
 
 import cn.relaxtech.doomsday.bi.boot.constant.AppConstant;
-import cn.relaxtech.doomsday.bi.boot.eventHandler.handler.AllianceCreateHandler;
-import cn.relaxtech.doomsday.bi.boot.eventHandler.handler.BaseEventHandler;
+import cn.relaxtech.doomsday.bi.boot.handler.handler.AllianceCreateHandler;
+import cn.relaxtech.doomsday.bi.boot.handler.handler.BaseEventHandler;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

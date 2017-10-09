@@ -19,7 +19,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.Roi" alias="Roi"/>
+        <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfRoi" alias="Roi"/>
         <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" alias="SystemConfParams"/>
         <typeAlias type="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" alias="SearchParams"/>
     </typeAliases>

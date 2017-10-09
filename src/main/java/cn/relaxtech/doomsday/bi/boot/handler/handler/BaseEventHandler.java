@@ -1,7 +1,7 @@
-package cn.relaxtech.doomsday.bi.boot.eventHandler.handler;
+package cn.relaxtech.doomsday.bi.boot.handler.handler;
 
-import cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog;
-import cn.relaxtech.doomsday.bi.boot.eventHandler.IEventHandler;
+import cn.relaxtech.doomsday.bi.boot.entity.pointlog.BaseEventLog;
+import cn.relaxtech.doomsday.bi.boot.handler.IEventHandler;
 import cn.relaxtech.doomsday.bi.boot.service.pointlog.BaseEventLogService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;

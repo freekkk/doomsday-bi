@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.SystemConfDao">
+
+    <resultMap id="ConfServerColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfServer">
+        <result column="id" property="id"/>
+        <result column="server_id" property="serverId"/>
+        <result column="server_name" property="serverName"/>
+        <result column="server_start_date" property="serverStartDate"/>
+        <result column="api_url" property="apiUrl"/>
+        <result column="show_flag" property="showFlag"/>
+    </resultMap>
+
+    
+    <select id="getConfServer" parameterType="List" resultMap="ConfServerColumnMap">
+        SELECT * from conf_server
+        <where>
+          server_id not IN
+            <if test="exList !=null and exList.size>0" >
+                <foreach collection="exList" item="item" open="(" close=")" separator="," index="index">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY server_start_date desc;
+    </select>
+
+    <select id="getServerStartDate" resultType="java.lang.String">
+        SELECT conf_value FROM conf_server WHERE conf_key='server_start_date'
+    </select>
+
+    <update id="updateServerStartDate" parameterType="java.lang.String">
+        UPDATE conf_server SET conf_value=#{startDate} where  conf_key='server_start_date'
+    </update>
+
+    <select id="confGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_general_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="confGeneralDetailData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_general_detail_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="confLtvData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_ltv_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="confMoneyData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_money_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="confMergeMissionLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_merge_misson_log(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="confMergeChargeLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_merge_charge_log(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <select id="procConfFullGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+        call proc_conf_full_general_data(#{startDate,mode=IN},#{endDate,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
+    </select>
+
+    <update id="truncateTable" parameterType="String">
+        TRUNCATE TABLE ${tableName}
+    </update>
+
+    <delete id="confClearCurrentData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams">
+        DELETE FROM bi_current_data WHERE job_date BETWEEN #{startDate} and #{endDate}
+    </delete>
+
+    <insert id="confUploadRoiData" useGeneratedKeys="true" keyProperty="id">
+        INSERT conf_roi (roi_date,country,channel,device_type,cost)
+          VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.roiDate},#{item.country},#{item.channel},#{item.deviceType},#{item.cost})
+        </foreach>
+    </insert>
+
+    <insert id="confUploadMoneyIgnoreHuman" useGeneratedKeys="true" keyProperty="id">
+        INSERT conf_money_ignore_human (human_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.humanId})
+        </foreach>
+    </insert>
+
+</mapper>
+

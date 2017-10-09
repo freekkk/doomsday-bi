@@ -1,4 +1,4 @@
-package cn.relaxtech.doomsday.bi.boot.entity.pointLog;
+package cn.relaxtech.doomsday.bi.boot.entity.pointlog;
 
 import lombok.Data;
 

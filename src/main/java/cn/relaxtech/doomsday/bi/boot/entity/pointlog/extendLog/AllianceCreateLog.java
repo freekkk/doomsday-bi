@@ -1,6 +1,6 @@
-package cn.relaxtech.doomsday.bi.boot.entity.pointLog.extendLog;
+package cn.relaxtech.doomsday.bi.boot.entity.pointlog.extendLog;
 
-import cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog;
+import cn.relaxtech.doomsday.bi.boot.entity.pointlog.BaseEventLog;
 import lombok.Data;
 
 import java.util.Date;

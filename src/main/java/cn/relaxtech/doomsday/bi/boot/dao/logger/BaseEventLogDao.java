@@ -1,10 +1,10 @@
-package cn.relaxtech.doomsday.bi.boot.dao.pointlog;
+package cn.relaxtech.doomsday.bi.boot.dao.logger;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import cn.relaxtech.doomsday.bi.boot.entity.pointLog.BaseEventLog;
+import cn.relaxtech.doomsday.bi.boot.entity.pointlog.BaseEventLog;
 
 @Mapper
 public interface BaseEventLogDao {

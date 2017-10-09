@@ -1,4 +1,4 @@
-package cn.relaxtech.doomsday.bi.boot.eventHandler;
+package cn.relaxtech.doomsday.bi.boot.handler;
 
 /**
  * 处理客户端发上来的log请求。

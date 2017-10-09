@@ -1,9 +1,9 @@
 package cn.relaxtech.doomsday.bi.boot.controller.pointlog;
 
 import cn.relaxtech.doomsday.bi.boot.constant.AppConstant;
-import cn.relaxtech.doomsday.bi.boot.entity.pointLog.ModelForm;
-import cn.relaxtech.doomsday.bi.boot.eventHandler.IEventHandler;
-import cn.relaxtech.doomsday.bi.boot.eventHandler.EventHandlerManage;
+import cn.relaxtech.doomsday.bi.boot.entity.pointlog.ModelForm;
+import cn.relaxtech.doomsday.bi.boot.handler.IEventHandler;
+import cn.relaxtech.doomsday.bi.boot.handler.EventHandlerManage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

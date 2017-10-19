@@ -28,78 +28,33 @@
         <result column="LTV90" property="LTV90"/>
     </resultMap>
 
-    <!--auto generated Code-->
-    <sql id="all_column">
-        `id`,
-        `job_date`,
-        `server_id`,
-        `country`,
-        `cname`,
-        `T`,
-        `channel`,
-        `device_type`,
-        `PUC`,
-        `NUC`,
-        `PAC`,
-        `LTV1`,
-        `LTV2`,
-        `LTV3`,
-        `LTV4`,
-        `LTV5`,
-        `LTV6`,
-        `LTV7`,
-        `LTV14`,
-        `LTV21`,
-        `LTV30`,
-        `LTV60`,
-        `LTV90`
-    </sql>
-
 
     <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams" resultMap="AllColumnMap">
-        SELECT
-        job_date,
-        sum(NUC) AS NUC,
-        sum(puc) as PUC,
-        sum(PAC) as PAC,
-        ROUND(sum(PAC1)/NUC,2) as LTV1,
-        ROUND(sum(PAC2)/NUC,2) as LTV2,
-        ROUND(sum(PAC3)/NUC,2) as LTV3,
-        ROUND(sum(PAC4)/NUC,2) as LTV4,
-        ROUND(sum(PAC5)/NUC,2) as LTV5,
-        ROUND(sum(PAC6)/NUC,2) as LTV6,
-        ROUND(sum(PAC7)/NUC,2) as LTV7,
-        ROUND(sum(PAC14)/NUC,2) as LTV14,
-        ROUND(sum(PAC21)/NUC,2) as LTV21,
-        ROUND(sum(PAC30)/NUC,2) as LTV30,
-        ROUND(sum(PAC60)/NUC,2) as LTV60,
-        ROUND(sum(PAC90)/NUC,2) as LTV90
-        FROM view_bi_ltv_data
+        SELECT * FROM view_bi_ltv_data
         <where>
             <if test="startDate != null and endDate !=null" >
                 job_date BETWEEN #{startDate}  AND #{endDate}
             </if>
 
-            <if test="country != null and country[0]!='ALL' and country.size()>0" >
+            <if test="country != null and country.size()>0" >
                 AND country in
                 <foreach collection="country" item="item" open="(" close=")" separator="," index="index">
                     #{item}
                 </foreach>
             </if>
 
-            <if test="channel != null and channel[0]!='ALL' and channel.size()>0" >
+            <if test="channel != null and channel.size()>0" >
                 AND channel in
                 <foreach collection="channel" item="item" open="(" close=")" separator="," index="index">
                     #{item}
                 </foreach>
             </if>
 
-            <if test="deviceType != null and deviceType!=0 " >
+            <if test="deviceType != null" >
                 AND device_Type=#{deviceType}
             </if>
         </where>
-        group by job_date
-        order by job_date desc
+        ORDER BY job_date DESC
     </select>
 
 </mapper>

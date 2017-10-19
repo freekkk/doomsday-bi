@@ -22,7 +22,7 @@
                 </foreach>
             </if>
         </where>
-        ORDER BY server_start_date desc;
+        ORDER BY server_id desc;
     </select>
 
     <select id="getServerStartDate" resultType="java.lang.String">

@@ -135,8 +135,8 @@ public class ApiController {
 
 	@ApiOperation(value="获取服务器列表")
 	@RequestMapping(value="getserverlist",method ={RequestMethod.GET})
-	public List<ConfServer> getServerLsit(String ex)
+	public List<ConfServer> getServerList()
 	{
-		return systemConfService.getConfServer(ex);
+		return systemConfService.getConfServer();
 	}
 }

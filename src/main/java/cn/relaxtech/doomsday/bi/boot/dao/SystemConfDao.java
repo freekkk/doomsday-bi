@@ -15,7 +15,7 @@ import java.util.List;
 @Mapper
 public interface SystemConfDao {
 
-    List<ConfServer> getConfServer(@Param("exList") List<String> ex);
+    List<ConfServer> getConfServer();
 
     String getServerStartDate();
 

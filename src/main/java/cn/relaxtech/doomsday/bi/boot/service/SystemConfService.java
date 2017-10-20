@@ -70,9 +70,9 @@ public class SystemConfService {
         return exeCode;
     }
 
-    public List<ConfServer> getConfServer(String ex){
-        List<String> exList= Splitter.on(',').trimResults().omitEmptyStrings().splitToList(ex);
-        return systemConfDao.getConfServer(exList);
+    public List<ConfServer> getConfServer(){
+
+        return systemConfDao.getConfServer();
     }
 
     private String getServerStartDate()

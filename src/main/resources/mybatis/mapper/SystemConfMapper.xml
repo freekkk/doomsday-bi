@@ -12,17 +12,8 @@
     </resultMap>
 
     
-    <select id="getConfServer" parameterType="List" resultMap="ConfServerColumnMap">
-        SELECT * from conf_server
-        <where>
-          server_id not IN
-            <if test="exList !=null and exList.size>0" >
-                <foreach collection="exList" item="item" open="(" close=")" separator="," index="index">
-                    #{item}
-                </foreach>
-            </if>
-        </where>
-        ORDER BY server_id desc;
+    <select id="getConfServer"  resultMap="ConfServerColumnMap">
+        SELECT * from conf_server ORDER BY server_id desc;
     </select>
 
     <select id="getServerStartDate" resultType="java.lang.String">

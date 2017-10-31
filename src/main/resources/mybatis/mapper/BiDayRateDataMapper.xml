@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.bi.BiDayRateDataDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.bi.BiDayRateData">
+        <result column="id" property="id"/>
+        <result column="job_date" property="jobDate"/>
+        <result column="server_id" property="serverId"/>
+        <result column="NUC" property="NUC"/>
+        <result column="D2RR" property="D2RR"/>
+        <result column="D3RR" property="D3RR"/>
+        <result column="D4RR" property="D4RR"/>
+        <result column="D5RR" property="D5RR"/>
+        <result column="D6RR" property="D6RR"/>
+        <result column="D7RR" property="D7RR"/>
+        <result column="D8RR" property="D8RR"/>
+        <result column="D9RR" property="D9RR"/>
+        <result column="D10RR" property="D10RR"/>
+        <result column="D11RR" property="D11RR"/>
+        <result column="D12RR" property="D12RR"/>
+        <result column="D13RR" property="D13RR"/>
+        <result column="D14RR" property="D14RR"/>
+        <result column="D15RR" property="D15RR"/>
+        <result column="D16RR" property="D16RR"/>
+        <result column="D17RR" property="D17RR"/>
+        <result column="D18RR" property="D18RR"/>
+        <result column="D19RR" property="D19RR"/>
+        <result column="D20RR" property="D20RR"/>
+        <result column="D21RR" property="D21RR"/>
+        <result column="D22RR" property="D22RR"/>
+        <result column="D23RR" property="D23RR"/>
+        <result column="D24RR" property="D24RR"/>
+        <result column="D25RR" property="D25RR"/>
+        <result column="D26RR" property="D26RR"/>
+        <result column="D27RR" property="D27RR"/>
+        <result column="D28RR" property="D28RR"/>
+        <result column="D29RR" property="D29RR"/>
+        <result column="D30RR" property="D30RR"/>
+    </resultMap>
+
+    <select id="getList" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.SearchParams"  resultMap="AllColumnMap">
+        SELECT * FROM bi_day_rate_data
+        <where>
+            <if test="startDate != null and endDate !=null" >
+                job_date BETWEEN #{startDate}  AND #{endDate}
+            </if>
+        </where>
+        ORDER BY job_date DESC
+        <if test="startDate == null and endDate ==null" >
+            limit 15
+        </if>
+    </select>
+</mapper>
+

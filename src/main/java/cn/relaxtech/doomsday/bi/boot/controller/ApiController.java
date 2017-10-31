@@ -49,6 +49,9 @@ public class ApiController {
     @Autowired
     private SystemConfService systemConfService;
 
+    @Autowired
+    private BiDayRateDataService biDayRateDataService;
+
 	@ApiOperation(value="bi总体数据")
 	@RequestMapping(value="bigeneraldata",method ={RequestMethod.GET,RequestMethod.POST} )
 	public List<BiGeneralData> biGeneralData(@RequestBody SearchParams params)
@@ -139,4 +142,13 @@ public class ApiController {
 	{
 		return systemConfService.getConfServer();
 	}
+
+	@ApiOperation(value="bi 30日存留数据")
+	@RequestMapping(value="bidayrate",method ={RequestMethod.POST})
+	public List<BiDayRateData> biDayRate(@RequestBody SearchParams params)
+	{
+		return biDayRateDataService.getList(params);
+	}
+
+
 }

@@ -13,7 +13,7 @@
 
     
     <select id="getConfServer"  resultMap="ConfServerColumnMap">
-        SELECT * from conf_server ORDER BY server_id desc;
+        SELECT * from conf_server where DATEDIFF(NOW(),server_start_date)>=-2  ORDER BY server_id desc
     </select>
 
     <select id="getServerStartDate" resultType="java.lang.String">

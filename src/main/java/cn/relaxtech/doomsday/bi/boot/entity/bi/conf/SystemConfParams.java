@@ -1,4 +1,4 @@
-package cn.relaxtech.doomsday.bi.boot.entity;
+package cn.relaxtech.doomsday.bi.boot.entity.bi.conf;
 
 import lombok.Data;
 

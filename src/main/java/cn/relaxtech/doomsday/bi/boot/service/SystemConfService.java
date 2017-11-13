@@ -2,12 +2,11 @@ package cn.relaxtech.doomsday.bi.boot.service;
 
 import cn.relaxtech.doomsday.bi.boot.constant.AppConstant;
 import cn.relaxtech.doomsday.bi.boot.dao.SystemConfDao;
-import cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams;
+import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfServer;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.MoneyIgnoreHuman;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfRoi;
 import com.alibaba.fastjson.JSON;
-import com.google.common.base.Splitter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

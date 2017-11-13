@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.relaxtech.doomsday.bi.boot.dao.user.UserDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="cn.relaxtech.doomsday.bi.boot.entity.user.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="status" property="status"/>
+        <result column="group" property="group"/>
+        <result column="pages" property="pages"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `id`,
+        `name`,
+        `password`,
+        `group`,
+        `pages`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user (
+            `id`,
+            `name`,
+            `password`,
+            `status`,
+            `group`,
+            `pages`
+        ) VALUES (
+            #{pojo.id},
+            #{pojo.name},
+            #{pojo.password},
+            #{pojo.status},
+            #{pojo.group},
+            #{pojo.pages}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.name!=null"> `name`,</if>
+            <if test="pojo.password!=null"> `password`,</if>
+            <if test="pojo.group!=null"> `group`,</if>
+            <if test="pojo.pages!=null"> `pages`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.name!=null">#{pojo.name},</if>
+            <if test="pojo.password!=null">#{pojo.password},</if>
+            <if test="pojo.group!=null">#{pojo.group},</if>
+            <if test="pojo.pages!=null">#{pojo.pages},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.name},
+            #{pojo.password},
+            #{pojo.group},
+            #{pojo.pages}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.name != null"> `name` = #{pojo.name}, </if>
+            <if test="pojo.password != null"> `password` = #{pojo.password}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.group != null"> `group` = #{pojo.group}, </if>
+            <if test="pojo.pages != null"> `pages` = #{pojo.pages} </if>
+        </set>
+        WHERE name = #{pojo.name}
+    </update>
+    
+    <select id="getUserByName" parameterType="String" resultMap="AllColumnMap">
+        SELECT `id`,`name`,`status`,`group`,`pages` from User WHERE NAME =#{name}
+    </select>
+
+    <select id="getUserByPassword" parameterType="String" resultMap="AllColumnMap">
+        SELECT `id`,`name`,`status`,`group`,`pages` from User WHERE NAME =#{name} AND password=#{password}
+    </select>
+
+    <select id="getUserList" resultMap="AllColumnMap">
+        SELECT `id`,`name`,`status`,`group`,`pages`,`create_time` from User ORDER BY create_time desc
+    </select>
+</mapper>
+

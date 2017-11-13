@@ -24,31 +24,31 @@
         UPDATE conf_server SET conf_value=#{startDate} where  conf_key='server_start_date'
     </update>
 
-    <select id="confGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_general_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="confGeneralDetailData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confGeneralDetailData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_general_detail_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="confLtvData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confLtvData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_ltv_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="confMoneyData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confMoneyData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_money_data(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="confMergeMissionLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confMergeMissionLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_merge_misson_log(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="confMergeChargeLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="confMergeChargeLog" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_merge_charge_log(#{startDate,mode=IN},#{endDate,mode=IN},#{intEmpty,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
-    <select id="procConfFullGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
+    <select id="procConfFullGeneralData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams" statementType="CALLABLE" resultType="Integer" >
         call proc_conf_full_general_data(#{startDate,mode=IN},#{endDate,mode=IN},#{exeCode,mode=OUT,jdbcType=OTHER,javaType=int})
     </select>
 
@@ -56,7 +56,7 @@
         TRUNCATE TABLE ${tableName}
     </update>
 
-    <delete id="confClearCurrentData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams">
+    <delete id="confClearCurrentData" parameterType="cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams">
         DELETE FROM bi_current_data WHERE job_date BETWEEN #{startDate} and #{endDate}
     </delete>
 

@@ -1,6 +1,6 @@
 package cn.relaxtech.doomsday.bi.boot.dao;
 
-import cn.relaxtech.doomsday.bi.boot.entity.SystemConfParams;
+import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.SystemConfParams;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfServer;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.MoneyIgnoreHuman;
 import cn.relaxtech.doomsday.bi.boot.entity.bi.conf.ConfRoi;

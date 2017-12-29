@@ -91,15 +91,15 @@
     </update>
     
     <select id="getUserByName" parameterType="String" resultMap="AllColumnMap">
-        SELECT `id`,`name`,`status`,`group`,`pages` from User WHERE NAME =#{name}
+        SELECT `id`,`name`,`status`,`group`,`pages` from user WHERE NAME =#{name}
     </select>
 
     <select id="getUserByPassword" parameterType="String" resultMap="AllColumnMap">
-        SELECT `id`,`name`,`status`,`group`,`pages` from User WHERE NAME =#{name} AND password=#{password}
+        SELECT `id`,`name`,`status`,`group`,`pages` from user WHERE NAME =#{name} AND password=#{password}
     </select>
 
     <select id="getUserList" resultMap="AllColumnMap">
-        SELECT `id`,`name`,`status`,`group`,`pages`,`create_time` from User ORDER BY create_time desc
+        SELECT `id`,`name`,`status`,`group`,`pages`,`create_time` from user ORDER BY create_time desc
     </select>
 </mapper>
 
